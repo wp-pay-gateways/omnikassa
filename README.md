@@ -1,5 +1,5 @@
 # WordPress Pay Gateway: OmniKassa
 
-**Mollie driver for the WordPress payment processing library.**
+**OmniKassa driver for the WordPress payment processing library.**
 
 [![Build Status](https://travis-ci.org/wp-pay-gateways/omnikassa.svg?branch=develop)](https://travis-ci.org/wp-pay-gateways/omnikassa)
