@@ -152,8 +152,6 @@ class Pronamic_WP_Pay_OmniKassa_ResponseCodes {
 	 * @param string $response_code
 	 */
 	public static function transform( $response_code ) {
-		$status = null;
-
 		switch ( $response_code ) {
 			case self::TRANSACTION_SUCCES:
 				return Pronamic_WP_Pay_Statuses::SUCCESS;
@@ -166,8 +164,8 @@ class Pronamic_WP_Pay_OmniKassa_ResponseCodes {
 				return Pronamic_WP_Pay_Statuses::OPEN;
 			case self::REQUEST_TIMEOUT:
 				return Pronamic_WP_Pay_Statuses::EXPIRED;
+			default:
+				return null;
 		}
-
-		return $status;
 	}
 }
