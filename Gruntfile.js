@@ -12,7 +12,7 @@ module.exports = function( grunt ) {
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
-				dir: [ './' ],
+				dir: [ 'src' ],
 			},
 			options: {
 				standard: 'phpcs.ruleset.xml',
@@ -28,13 +28,13 @@ module.exports = function( grunt ) {
 					'-lf': null
 				}
 			},
-			all: [ '**/*.php' ]
+			all: [ 'src/**/*.php' ]
 		},
 
 		// PHP Mess Detector
 		phpmd: {
 			application: {
-				dir: '.'
+				dir: 'src'
 			},
 			options: {
 				exclude: 'node_modules',
