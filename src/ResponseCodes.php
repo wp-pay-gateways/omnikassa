@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0.0
  */
-class Pronamic_WP_Pay_OmniKassa_ResponseCodes {
+class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
 	/**
 	 * Transaction successful.
 	 *
