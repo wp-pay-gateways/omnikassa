@@ -16,7 +16,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @see page 14 - http://pronamic.nl/wp-content/uploads/2013/10/integratiehandleiding_rabo_omnikassa_en_versie_5_0_juni_2013_10_29451215.pdf
 	 * @var string
 	 */
-	const ACTION_URL_TEST = 'https://payment‐webinit.simu.omnikassa.rabobank.nl/paymentServlet';
+	const ACTION_URL_TEST = 'https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet';
 
 	/**
 	 * Action URL For a payment request in the production environment,
