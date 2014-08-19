@@ -1,25 +1,24 @@
 <?php
 
 /**
- * Title: Mollie statuses constants tests
+ * Title: OmniKassa response codes test
  * Description:
  * Copyright: Copyright (c) 2005 - 2014
  * Company: Pronamic
  * @author Remco Tolsma
  * @version 1.0.0
- * @see https://www.mollie.nl/support/documentatie/betaaldiensten/ideal/en/
  */
 class Pronamic_WP_Pay_OmniKassa_ResponseCodesTest extends PHPUnit_Framework_TestCase {
 	/**
-	 * @dataProvider statusMatrixProvider
+	 * @dataProvider status_matrix_provider
 	 */
-	public function testTransform( $responseCode, $expected ) {
+	public function test_transform( $responseCode, $expected ) {
 		$status = Pronamic_WP_Pay_OmniKassa_ResponseCodes::transform( $responseCode );
 
 		$this->assertEquals( $expected, $status );
 	}
 
-	public function statusMatrixProvider() {
+	public function status_matrix_provider() {
 		return array(
 			array( Pronamic_WP_Pay_OmniKassa_ResponseCodes::TRANSACTION_SUCCES, Pronamic_WP_Pay_Statuses::SUCCESS ),
 			array( Pronamic_WP_Pay_OmniKassa_ResponseCodes::AUTHORIZATION_LIMIT, Pronamic_WP_Pay_Statuses::FAILURE ),
@@ -29,5 +28,5 @@ class Pronamic_WP_Pay_OmniKassa_ResponseCodesTest extends PHPUnit_Framework_Test
 			array( Pronamic_WP_Pay_OmniKassa_ResponseCodes::REQUEST_TIMEOUT, Pronamic_WP_Pay_Statuses::EXPIRED ),
 			array( 'not existing response code', null ),
 		);
-    }
+	}
 }
