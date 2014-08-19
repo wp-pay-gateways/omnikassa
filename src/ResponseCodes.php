@@ -153,18 +153,18 @@ class Pronamic_WP_Pay_OmniKassa_ResponseCodes {
 	 */
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
-			case self::TRANSACTION_SUCCES:
+			case self::TRANSACTION_SUCCES :
 				return Pronamic_WP_Pay_Statuses::SUCCESS;
-			case self::AUTHORIZATION_LIMIT:
-			case self::AUTHORIZATION_REFUSED:
+			case self::AUTHORIZATION_LIMIT :
+			case self::AUTHORIZATION_REFUSED :
 				return Pronamic_WP_Pay_Statuses::FAILURE;
-			case self::CANCELLATION_OF_PAYMENT:
+			case self::CANCELLATION_OF_PAYMENT :
 				return Pronamic_WP_Pay_Statuses::CANCELLED;
-			case self::PENDING_TRANSACTION:
+			case self::PENDING_TRANSACTION :
 				return Pronamic_WP_Pay_Statuses::OPEN;
-			case self::REQUEST_TIMEOUT:
+			case self::REQUEST_TIMEOUT :
 				return Pronamic_WP_Pay_Statuses::EXPIRED;
-			default:
+			default :
 				return null;
 		}
 	}
