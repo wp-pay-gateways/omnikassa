@@ -63,7 +63,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_automatic_response_url( home_url( '/' ) );
 		$this->client->set_amount( $data->get_amount() );
 		$this->client->set_transaction_reference( $payment->get_transaction_id() );
-		
+
 		if ( isset( $payment_method ) ) {
 			if ( 'mister_cash' == $payment_method ) {
 				$this->client->addPaymentMeanBrand( 'BCMC' );
@@ -101,7 +101,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		if ( 0 === strcasecmp( $input_seal, $seal ) ) {
 			$response_code = $data['responseCode'];
 
-			$status = Pronamic_WP_Pay_OmniKassa_ResponseCodes::transform( $response_code );
+			$status = Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::transform( $response_code );
 
 			// Set the status of the payment
 			$payment->set_status( $status );
