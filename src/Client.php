@@ -348,7 +348,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @param string $transactionReference
 	 */
 	public function set_transaction_reference( $transaction_reference ) {
-		$this->transaction_reference = substr( $transaction_reference, 0, 35 );
+		$this->transaction_reference = Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper::an( $transaction_reference, 35 );
 	}
 
 	//////////////////////////////////////////////////
