@@ -43,7 +43,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 	//////////////////////////////////////////////////
 
-	public static function getSupportedLanguageCodes() {
+	public static function get_supported_language_codes() {
 		return array(
 			self::ISO_639_1_ENGLISH,
 			self::ISO_639_1_FRENCH,
@@ -54,8 +54,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		);
 	}
 
-	public static function isSupportedLanguage( $language ) {
-		$languages = self::getSupportedLanguageCodes();
+	public static function is_supported_language( $language ) {
+		$languages = self::get_supported_language_codes();
 
 		return in_array( $language, $languages );
 	}
@@ -104,7 +104,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @var string N3
 	 */
-	private $currencyNumericCode;
+	private $currency_numeric_code;
 
 	/**
 	 * Merchant ID
@@ -156,14 +156,14 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @doc http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 * @var string A2
 	 */
-	private $customerLanguage;
+	private $customer_language;
 
 	/**
 	 * Payment mean brand list
 	 *
 	 * @var array
 	 */
-	private $paymentMeanBrandList;
+	private $payment_mean_brand_list;
 
 	/**
 	 * Order ID
@@ -177,7 +177,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @var DateTime
 	 */
-	private $expirationDate;
+	private $expiration_date;
 
 	//////////////////////////////////////////////////
 
@@ -194,7 +194,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * Constructs and initalize an OmniKassa object
 	 */
 	public function __construct() {
-		$this->paymentMeanBrandList = array();
+		$this->payment_mean_brand_list = array();
 
 		$this->set_interface_version( self::INTERFACE_VERSION_HP_1_0 );
 	}
@@ -247,7 +247,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @return string currency numeric code
 	 */
 	public function get_currency_numeric_code() {
-		return $this->currencyNumericCode;
+		return $this->currency_numeric_code;
 	}
 
 	/**
@@ -256,7 +256,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @param string $currencyCode
 	 */
 	public function set_currency_numeric_code( $currency_numeric_code ) {
-		$this->currencyNumericCode = $currency_numeric_code;
+		$this->currency_numeric_code = $currency_numeric_code;
 	}
 
 	//////////////////////////////////////////////////
@@ -400,8 +400,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @return string
 	 */
-	public function getCustomerLanguage() {
-		return $this->customerLanguage;
+	public function get_customer_language() {
+		return $this->customer_language;
 	}
 
 	/**
@@ -409,8 +409,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @param string $customerLanguage
 	 */
-	public function setCustomerLanguage( $customerLanguage ) {
-		$this->customerLanguage = $customerLanguage;
+	public function set_customer_language( $customer_language ) {
+		$this->customer_language = $customer_language;
 	}
 
 	//////////////////////////////////////////////////
@@ -418,10 +418,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
 	 * Add the specified payment mean brand to the payment mean brand list
 	 *
-	 * @param string $paymentMeanBrand
+	 * @param string $payment_mean_brand
 	 */
-	public function addPaymentMeanBrand( $paymentMeanBrand ) {
-		$this->paymentMeanBrandList[] = $paymentMeanBrand;
+	public function add_payment_mean_brand( $payment_mean_brand ) {
+		$this->payment_mean_brand_list[] = $payment_mean_brand;
 	}
 
 	/**
@@ -429,8 +429,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @return string ANS128 listString comma separated list
 	 */
-	public function getPaymentMeanBrandList() {
-		return implode( ', ', $this->paymentMeanBrandList );
+	public function get_payment_mean_brand_list() {
+		return implode( ', ', $this->payment_mean_brand_list );
 	}
 
 	//////////////////////////////////////////////////
@@ -460,8 +460,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @return DateTime
 	 */
-	public function getExpirationDate() {
-		return $this->expirationDate;
+	public function get_expiration_date() {
+		return $this->expiration_date;
 	}
 
 	/**
@@ -469,11 +469,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @return string
 	 */
-	public function getFormattedExpirationDate() {
+	public function get_formatted_expiration_date() {
 		$result = null;
 
-		if ( $this->expirationDate != null ) {
-			$result = $this->expirationDate->format( DATE_ISO8601 );
+		if ( $this->expiration_date != null ) {
+			$result = $this->expiration_date->format( DATE_ISO8601 );
 		}
 
 		return $result;
@@ -484,15 +484,13 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @param DateTime $expirationDate
 	 */
-	public function setExpirationDate( DateTime $expirationDate = null ) {
-		$this->expirationDate = $expirationDate;
+	public function set_expiration_date( DateTime $date = null ) {
+		$this->expiration_date = $date;
 	}
 
 	//////////////////////////////////////////////////
 
 	public function get_data_array() {
-		$expiration_date = $this->getExpirationDate();
-
 		// Payment Request - required fields
 		$required_fields = array(
 			'amount'               => $this->get_formatted_amount(),
@@ -506,10 +504,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		// Payment request - optional fields
 		$optional_fields = array(
 			'automaticResponseUrl' => $this->get_automatic_response_url(),
-			'customerLanguage'     => $this->getCustomerLanguage(),
-			'paymentMeanBrandList' => $this->getPaymentMeanBrandList(),
+			'customerLanguage'     => $this->get_customer_language(),
+			'paymentMeanBrandList' => $this->get_payment_mean_brand_list(),
 			'orderId'              => $this->get_order_id(),
-			'expirationDate'       => $this->getFormattedExpirationDate()
+			'expirationDate'       => $this->get_formatted_expiration_date()
 		);
 
 		// @see http://briancray.com/2009/04/25/remove-null-values-php-arrays/
@@ -588,7 +586,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 *
 	 * @return string
 	 */
-	public function getHtmlFields() {
+	public function get_html_fields() {
 		return Pronamic_IDeal_IDeal::htmlHiddenFields( array(
 			'Data'             => $this->get_data(),
 			'InterfaceVersion' => $this->get_interface_version(),
@@ -632,7 +630,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 	//////////////////////////////////////////////////
 
-	public function getResponseCodeDescription() {
+	public function get_response_code_description() {
 		return array(
 			'00' => 'Transaction success, authorization accepted',
 			'02' => 'Please call the bank because the authorization limit on the card has been exceeded',
