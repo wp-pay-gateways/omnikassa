@@ -39,7 +39,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
  	 * @param string $max
  	 * @return string
  	 */
-	public static function an( $string, $max = null ) {
+	public static function filter_an( $string, $max = null ) {
 		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_an, $string, $max );
 	}
 }
