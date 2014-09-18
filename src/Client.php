@@ -592,8 +592,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 			'InterfaceVersion' => $this->get_interface_version(),
 			'Seal'             => $this->get_seal()
 		) );
-
-		return $html;
 	}
 
 	//////////////////////////////////////////////////
