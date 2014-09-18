@@ -53,31 +53,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * @param Pronamic_Pay_PaymentDataInterface $data
 	 */
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
-		$transaction_reference = $this->config->transaction_reference;
-
-		if ( empty( $transaction_reference ) ) {
-			$transaction_reference = md5( time() . $data->get_order_id() );
-		} else {
-			// @see https://github.com/woothemes/woocommerce/blob/v2.0.19/classes/emails/class-wc-email-new-order.php
-			$find    = array();
-			$replace = array();
-
-			$find[]    = '{blogname}';
-			$replace[] = $data->get_blogname();
-
-			$find[]    = '{site_title}';
-			$replace[] = $data->get_blogname();
-
-			$find[]    = '{source_id}';
-			$replace[] = $data->get_source_id();
-
-			$find[]    = '{payment_id}';
-			$replace[] = $payment->get_id();
-
-			$transaction_reference = str_replace( $find, $replace, $transaction_reference );
-		}
-
-		$payment->set_transaction_id( $transaction_reference );
+		$payment->set_transaction_id( md5( time() . $data->get_order_id() ) );
 		$payment->set_action_url( $this->client->get_action_url() );
 
 		$this->client->setCustomerLanguage( $data->get_language() );
@@ -86,7 +62,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
 		$this->client->set_amount( $data->get_amount() );
-		$this->client->set_transaction_reference( $transaction_reference );
+		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
 		if ( isset( $payment_method ) ) {
 			if ( 'mister_cash' == $payment_method ) {
