@@ -33,7 +33,29 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
 	//////////////////////////////////////////////////
 
 	/**
- 	 * Alphanumerical, free text
+ 	 * Filter N characters
+ 	 *
+ 	 * @param string $string
+ 	 * @param string $max
+ 	 * @return string
+ 	 */
+	public static function filter_n( $string, $max = null ) {
+		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_n, $string, $max );
+	}
+
+	/**
+ 	 * Filter A characters
+ 	 *
+ 	 * @param string $string
+ 	 * @param string $max
+ 	 * @return string
+ 	 */
+	public static function filter_a( $string, $max = null ) {
+		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_a, $string, $max );
+	}
+
+	/**
+ 	 * Filter A + N characters
  	 *
  	 * @param string $string
  	 * @param string $max
