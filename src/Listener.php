@@ -16,7 +16,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gatewa
 
 		if ( $condition ) {
 			$input_data = filter_input( INPUT_POST, 'Data', FILTER_SANITIZE_STRING );
-			$input_seal = filter_input( INPUT_POST, 'Seal', FILTER_SANITIZE_STRING );
 
 			$data = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $input_data );
 
