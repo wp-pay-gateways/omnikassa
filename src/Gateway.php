@@ -64,10 +64,15 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_amount( $data->get_amount() );
 		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
-		if ( isset( $payment_method ) ) {
-			if ( 'mister_cash' == $payment_method ) {
-				$this->client->add_payment_mean_brand( 'BCMC' );
-			}
+		switch ( $payment_method ) {
+			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
+
+				break;
+			case Pronamic_WP_Pay_PaymentMethods::MINITIX :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MINITIX );
+
+				break;
 		}
 	}
 
