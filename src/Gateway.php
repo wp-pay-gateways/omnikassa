@@ -65,6 +65,13 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
 		switch ( $payment_method ) {
+			case Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA );
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VPAY );
+
+				break;
 			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
 
