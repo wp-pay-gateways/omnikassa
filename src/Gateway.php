@@ -65,6 +65,35 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
 		switch ( $payment_method ) {
+			/*
+			 * If this field is not supplied in the payment request, then
+			 * by default the customer will be redirected to the Rabo
+			 * OmniKassa payment page. On the payment page, the
+			 * customer can choose from the payment methods
+			 * offered by the Rabo OmniKassa. These are the payment
+			 * methods: IDEAL, MINITIX, VISA, MASTERCARD,
+			 * MAESTRO, V PAY and BCMC.
+			 *
+			 * Exception: the register services INCASSO (direct debit),
+			 * ACCEPTGIRO (giro collection form) and REMBOURS
+			 * (cash on delivery) are not displayed on the Rabo
+			 * OmniKassa payment page by default.
+			 * If you wish to offer these register services to the
+			 * customer on the payment page, then you need to
+			 * always populate the paymentMeanBrandList field with
+			 * all the payment methods you wish to offer (provided
+			 * these have been requested and activated): IDEAL,
+			 * MINITIX, VISA, MASTERCARD, MAESTRO, VPAY, BCMC,
+			 * INCASSO, ACCEPTGIRO, REMBOURS.
+			 *
+			 * If you let the customer choose the payment method
+			 * while still in your webshop, then you must populate
+			 * this field of the payment request with only the selected
+			 * payment method. Populating this field with only one
+			 * payment method will instruct the Rabo OmniKassa to
+			 * redirect the customer directly to the payment page for
+			 * this payment method.
+			 */
 			case Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
