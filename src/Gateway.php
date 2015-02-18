@@ -119,7 +119,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			$payment->set_status( $status );
 
 			$labels = array(
-				'amount' 	           => __( 'Amount', 'pronamic_ideal' ),
+				'amount'               => __( 'Amount', 'pronamic_ideal' ),
 				'captureDay'           => _x( 'Capture Day', 'creditcard', 'pronamic_ideal' ),
 				'captureMode'          => _x( 'Capture Mode', 'creditcard', 'pronamic_ideal' ),
 				'currencyCode'         => __( 'Currency Code', 'pronamic_ideal' ),
