@@ -101,6 +101,14 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VPAY );
 
 				break;
+			case Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
+
+				break;
+			case Pronamic_WP_Pay_PaymentMethods::IDEAL :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
+
+				break;
 			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
 
