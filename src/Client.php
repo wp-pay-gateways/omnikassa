@@ -6,7 +6,8 @@
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic
  * @author Remco Tolsma
- * @version 1.0.0
+ * @version 1.1.2
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
@@ -582,16 +583,17 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	//////////////////////////////////////////////////
 
 	/**
-	 * Get HTML fields
+	 * Get fields
 	 *
-	 * @return string
+	 * @since 1.1.2
+	 * @return array
 	 */
-	public function get_html_fields() {
-		return Pronamic_IDeal_IDeal::htmlHiddenFields( array(
+	public function get_fields() {
+		return array(
 			'Data'             => $this->get_data(),
 			'InterfaceVersion' => $this->get_interface_version(),
-			'Seal'             => $this->get_seal()
-		) );
+			'Seal'             => $this->get_seal(),
+		);
 	}
 
 	//////////////////////////////////////////////////
