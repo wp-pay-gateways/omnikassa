@@ -431,7 +431,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @return string ANS128 listString comma separated list
 	 */
 	public function get_payment_mean_brand_list() {
-		return implode( ', ', $this->payment_mean_brand_list );
+		return apply_filters( 'pronamic_pay_omnikassa_payment_mean_brand_list', implode( ', ', $this->payment_mean_brand_list ) );
 	}
 
 	//////////////////////////////////////////////////
