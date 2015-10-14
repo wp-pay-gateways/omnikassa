@@ -473,7 +473,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public function get_formatted_expiration_date() {
 		$result = null;
 
-		if ( $this->expiration_date != null ) {
+		if ( null !== $this->expiration_date ) {
 			$result = $this->expiration_date->format( DATE_ISO8601 );
 		}
 
@@ -499,7 +499,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 			'merchantId'           => $this->get_merchant_id(),
 			'normalReturnUrl'      => $this->get_normal_return_url(),
 			'transactionReference' => $this->get_transaction_reference(),
-			'keyVersion'           => $this->get_key_version()
+			'keyVersion'           => $this->get_key_version(),
 		);
 
 		// Payment request - optional fields
@@ -508,7 +508,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 			'customerLanguage'     => $this->get_customer_language(),
 			'paymentMeanBrandList' => $this->get_payment_mean_brand_list(),
 			'orderId'              => $this->get_order_id(),
-			'expirationDate'       => $this->get_formatted_expiration_date()
+			'expirationDate'       => $this->get_formatted_expiration_date(),
 		);
 
 		// @see http://briancray.com/2009/04/25/remove-null-values-php-arrays/

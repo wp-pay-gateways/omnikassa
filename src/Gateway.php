@@ -35,7 +35,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client = new Pronamic_WP_Pay_Gateways_OmniKassa_Client();
 
 		$action_url = Pronamic_WP_Pay_Gateways_OmniKassa_Client::ACTION_URL_PRUDCTION;
-		if ( $config->mode == Pronamic_IDeal_IDeal::MODE_TEST ) {
+		if ( Pronamic_IDeal_IDeal::MODE_TEST === $config->mode ) {
 			$action_url = Pronamic_WP_Pay_Gateways_OmniKassa_Client::ACTION_URL_TEST;
 		}
 
