@@ -24,8 +24,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 - Added support for the Incasso (Direct Debit) payment method.
 - Added an payment mean brand list class.
 
-- 1.0.0 - 2015-01-19
-*	First release.
+## 1.0.0 - 2015-01-19
+- First release.
 
 [unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.3...HEAD
 [1.1.3]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.2...1.1.3
