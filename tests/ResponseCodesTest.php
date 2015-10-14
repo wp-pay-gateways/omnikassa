@@ -24,6 +24,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodesTest extends PHPUnit_Frame
 			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::AUTHORIZATION_LIMIT, Pronamic_WP_Pay_Statuses::FAILURE ),
 			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::AUTHORIZATION_REFUSED, Pronamic_WP_Pay_Statuses::FAILURE ),
 			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::CANCELLATION_OF_PAYMENT, Pronamic_WP_Pay_Statuses::CANCELLED ),
+			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::NUMBER_ATTEMPT_EXCEEDED, Pronamic_WP_Pay_Statuses::FAILURE ),
 			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::PENDING_TRANSACTION, Pronamic_WP_Pay_Statuses::OPEN ),
 			array( Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::REQUEST_TIMEOUT, Pronamic_WP_Pay_Statuses::EXPIRED ),
 			array( 'not existing response code', null ),
