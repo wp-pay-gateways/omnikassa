@@ -57,7 +57,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$payment->set_transaction_id( md5( time() . $data->get_order_id() ) );
 		$payment->set_action_url( $this->client->get_action_url() );
 
-		$this->client->set_customer_language( Pronamic_WP_Pay_OmniKassa_LocaleHelper::transform( $data->get_language() ) );
+		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $data->get_language() ) );
 		$this->client->set_currency_numeric_code( $data->get_currency_numeric_code() );
 		$this->client->set_order_id( $data->get_order_id() );
 		$this->client->set_normal_return_url( home_url( '/' ) );
