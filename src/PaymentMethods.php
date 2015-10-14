@@ -10,70 +10,70 @@
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods {
 	/**
-	 * iDEAL
+	 * Constant for the iDEAL payment method.
 	 *
 	 * @var string
 	 */
 	const IDEAL = 'IDEAL';
 
 	/**
-	 * VISA
+	 * Constant for the VISA payment method.
 	 *
 	 * @var string
 	 */
 	const VISA = 'VISA';
 
 	/**
-	 * MasterCard
+	 * Constant for the MasterCard payment method.
 	 *
 	 * @var string
 	 */
 	const MASTERCARD = 'MASTERCARD';
 
 	/**
-	 * Maestro
+	 * Constant for the Maestro payment method.
 	 *
 	 * @var string
 	 */
 	const MAESTRO = 'MAESTRO';
 
 	/**
-	 * V PAY
+	 * Constant for the V PAY payment method.
 	 *
 	 * @var string
 	 */
 	const VPAY = 'VPAY';
 
 	/**
-	 * Bancontact/Mister Cash
+	 * Constant for the Bancontact/Mister Cash payment method.
 	 *
 	 * @var string
 	 */
 	const BCMC = 'BCMC';
 
 	/**
-	 * MiniTix
+	 * Constant for the MiniTix payment method.
 	 *
 	 * @var string
 	 */
 	const MINITIX = 'MINITIX';
 
 	/**
-	 * Incasso
+	 * Constant for the Incasso payment method.
 	 *
 	 * @var string
 	 */
 	const INCASSO = 'INCASSO';
 
 	/**
-	 * Acceptgiro
+	 * Constant for the Acceptgiro payment method.
 	 *
 	 * @var string
 	 */
 	const ACCEPTGIRO = 'ACCEPTGIRO';
 
 	/**
-	 * Rembours
+	 * Constant for the Rembours payment method.
 	 *
 	 * @var string
 	 */

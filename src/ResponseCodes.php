@@ -157,6 +157,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
 				return Pronamic_WP_Pay_Statuses::SUCCESS;
 			case self::AUTHORIZATION_LIMIT :
 			case self::AUTHORIZATION_REFUSED :
+			case self::NUMBER_ATTEMPT_EXCEEDED :
 				return Pronamic_WP_Pay_Statuses::FAILURE;
 			case self::CANCELLATION_OF_PAYMENT :
 				return Pronamic_WP_Pay_Statuses::CANCELLED;

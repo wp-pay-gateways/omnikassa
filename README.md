@@ -10,6 +10,26 @@
 [![License](https://poser.pugx.org/wp-pay-gateways/omnikassa/license.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+## Filters
+
+### Filter `pronamic_pay_omnikassa_payment_mean_brand_list`
+
+With the `pronamic_pay_omnikassa_payment_mean_brand_list` filter you adjust the OmniKassa `paymentMeanBrandList` parameter.
+
+Example:
+
+```php
+function custom_omnikassa_payment_mean_brand_list( $list ) {
+	$list = array(
+		'IDEAL',
+	);
+
+	return $list;
+}
+
+add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_payment_mean_brand_list' );
+```
+
 ## Documentation
 
 *	[Integration Guide Rabo OmniKassa, Version 7.1, April 2014](http://pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_rabo_omnikassa_en_version_7_1_april_2014_final_2_0_29637101.pdf)
