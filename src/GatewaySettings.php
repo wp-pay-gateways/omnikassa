@@ -27,8 +27,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_GatewaySettings extends Pronamic_WP_Pay
 	}
 
 	public function fields( array $fields ) {
-		// Partner ID
+		// Merchant ID
 		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'omnikassa',
 			'meta_key'    => '_pronamic_gateway_omnikassa_merchant_id',
 			'title'       => __( 'Merchant ID', 'pronamic_ideal' ),
@@ -36,7 +37,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_GatewaySettings extends Pronamic_WP_Pay
 			'classes'     => array( 'code' ),
 		);
 
+		// Secret Key
 		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'omnikassa',
 			'meta_key'    => '_pronamic_gateway_omnikassa_secret_key',
 			'title'       => __( 'Secret Key', 'pronamic_ideal' ),
@@ -44,7 +47,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_GatewaySettings extends Pronamic_WP_Pay
 			'classes'     => array( 'large-text', 'code' ),
 		);
 
+		// Key Version
 		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'omnikassa',
 			'meta_key'    => '_pronamic_gateway_omnikassa_key_version',
 			'title'       => __( 'Key Version', 'pronamic_ideal' ),
