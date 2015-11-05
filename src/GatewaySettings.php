@@ -54,7 +54,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_GatewaySettings extends Pronamic_WP_Pay
 			'meta_key'    => '_pronamic_gateway_omnikassa_key_version',
 			'title'       => __( 'Key Version', 'pronamic_ideal' ),
 			'type'        => 'text',
-			'classes'     => array( 'small-text', 'code' ),
+			'classes'     => array( 'code' ),
+			'size'        => 5,
 			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
 		);
 
