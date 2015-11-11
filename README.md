@@ -30,6 +30,19 @@ function custom_omnikassa_payment_mean_brand_list( $list ) {
 add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_payment_mean_brand_list' );
 ```
 
+## Links
+
+*	https://dashboard.omnikassa.rabobank.nl/
+*	https://download.omnikassa.rabobank.nl/
+
+## Production Environment
+
+**Payment Server URL:** https://payment-webinit.omnikassa.rabobank.nl/paymentServlet  
+
+## Test Environment
+
+**Payment Server URL:** https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet  
+
 ## Documentation
 
 *	[Integration Guide Rabo OmniKassa, Version 7.1, April 2014](http://pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_rabo_omnikassa_en_version_7_1_april_2014_final_2_0_29637101.pdf)
