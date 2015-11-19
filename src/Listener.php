@@ -10,11 +10,11 @@
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gateways_ListenerInterface {
 	public static function listen() {
-		$condition  = true;
-		$condition &= filter_has_var( INPUT_POST, 'Data' );
-		$condition &= filter_has_var( INPUT_POST, 'Seal' );
-
-		if ( $condition ) {
+		if ( 
+			filter_has_var( INPUT_POST, 'Data' ) 
+				&&
+			filter_has_var( INPUT_POST, 'Seal' )
+		) {
 			$input_data = filter_input( INPUT_POST, 'Data', FILTER_SANITIZE_STRING );
 
 			$data = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $input_data );
