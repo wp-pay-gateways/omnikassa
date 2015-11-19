@@ -8,10 +8,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Integration extends Pronamic_WP_Pay_Gat
 		$this->provider      = 'rabobank';
 
 		// Actions
-		$action = array( 'Pronamic_WP_Pay_Gateways_OmniKassa_Listener', 'listen' );
+		$function = array( 'Pronamic_WP_Pay_Gateways_OmniKassa_Listener', 'listen' );
 
-		if ( ! has_action( 'wp_loaded', $action ) ) {
-			add_action( 'wp_loaded', $action );	
+		if ( ! has_action( 'wp_loaded', $function ) ) {
+			add_action( 'wp_loaded', $function );
 		}
 	}
 
