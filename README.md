@@ -12,10 +12,12 @@
 
 ## Test Account
 
-**URL:** `https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet`  
-**Merchant ID:** `002020000000001`  
-**Secret Key:** `002020000000001_KEY1`  
-**Key Version:** `1`
+| Option      | Value                                                               |
+| ----------- | ------------------------------------------------------------------- |
+| URL         | `https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet` |
+| Merchant ID | `002020000000001`                                                   |
+| Secret Key  | `002020000000001_KEY1`                                              |
+| Key Version | `1`                                                                 |
 
 
 ## Filters
