@@ -10,6 +10,14 @@
 [![License](https://poser.pugx.org/wp-pay-gateways/omnikassa/license.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+## Test Account
+
+**URL:** `https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet`  
+**Merchant ID:** `002020000000001`  
+**Secret Key:** `002020000000001_KEY1`  
+**Key Version:** `1`
+
+
 ## Filters
 
 ### Filter `pronamic_pay_omnikassa_payment_mean_brand_list`
