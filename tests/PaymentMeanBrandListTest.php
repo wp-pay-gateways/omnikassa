@@ -16,12 +16,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandListTest extends WP_Uni
 	function test_constructor() {
 		$list = new Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList( array(
 			Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL,
-			Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MINITIX,
+			Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO,
 		) );
 
 		$string = (string) $list;
 
-		$this->assertEquals( 'IDEAL, MINITIX', $string );
+		$this->assertEquals( 'IDEAL, INCASSO', $string );
 	}
 
 	/**
@@ -30,10 +30,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandListTest extends WP_Uni
 	function test_add_payment_method() {
 		$list = new Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList();
 		$list->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
-		$list->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MINITIX );
+		$list->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
 
 		$string = (string) $list;
 
-		$this->assertEquals( 'IDEAL, MINITIX', $string );
+		$this->assertEquals( 'IDEAL, INCASSO', $string );
 	}
 }

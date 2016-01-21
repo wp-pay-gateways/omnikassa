@@ -52,13 +52,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods {
 	const BCMC = 'BCMC';
 
 	/**
-	 * Constant for the MiniTix payment method.
-	 *
-	 * @var string
-	 */
-	const MINITIX = 'MINITIX';
-
-	/**
 	 * Constant for the Incasso payment method.
 	 *
 	 * @var string
