@@ -3,8 +3,9 @@
 /**
  * Title: OmniKassa locale helper
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.3
  * @since 1.1.3
@@ -35,11 +36,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper {
 		$locale = strtoupper( $locale );
 
 		// Is supported?
-		if ( in_array( $locale, $supported ) ) {
+		if ( in_array( $locale, $supported, true ) ) {
 			return $locale;
 		}
 
-		// Return
 		return null;
 	}
 }

@@ -3,8 +3,9 @@
 /**
  * Title: iDEAL gateway settings
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.2.0
  * @since 1.2.0
@@ -22,7 +23,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Admin_
 			'methods' => array( 'omnikassa' ),
 		);
 
-		// Return
 		return $sections;
 	}
 
@@ -59,7 +59,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Admin_
 			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
 		);
 
-		// Return
 		return $fields;
 	}
 }

@@ -3,8 +3,9 @@
 /**
  * Title: OmniKassa client
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.2
  * @since 1.0.0
@@ -58,7 +59,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public static function is_supported_language( $language ) {
 		$languages = self::get_supported_language_codes();
 
-		return in_array( $language, $languages );
+		return in_array( $language, $languages, true );
 	}
 
 	//////////////////////////////////////////////////

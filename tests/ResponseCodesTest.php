@@ -3,8 +3,9 @@
 /**
  * Title: OmniKassa response codes test
  * Description:
- * Copyright: Copyright (c) 2005 - 2014
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.0.0
  */
@@ -14,8 +15,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodesTest extends PHPUnit_Frame
 	 *
 	 * @dataProvider status_matrix_provider
 	 */
-	public function test_transform( $responseCode, $expected ) {
-		$status = Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::transform( $responseCode );
+	public function test_transform( $response_code, $expected ) {
+		$status = Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::transform( $response_code );
 
 		$this->assertEquals( $expected, $status );
 	}
