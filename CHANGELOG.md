@@ -7,6 +7,10 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.1.4] - 2016-02-01
+- Added an gateway settings class.
+- Remove discontinued MiniTix gateway.
+
 ## [1.1.3] - 2015-10-14
 - Add locale helper to prevent sending unsupported language codes.
 - Add filter pronamic_pay_omnikassa_payment_mean_brand_list.
@@ -27,7 +31,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.3...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.4...HEAD
+[1.1.4]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.3...1.1.4
 [1.1.3]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.0...1.1.1

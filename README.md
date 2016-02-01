@@ -3,12 +3,22 @@
 **OmniKassa driver for the WordPress payment processing library.**
 
 [![Build Status](https://travis-ci.org/wp-pay-gateways/omnikassa.svg?branch=develop)](https://travis-ci.org/wp-pay-gateways/omnikassa)
-[![Coverage Status](https://coveralls.io/repos/wp-pay-gateways/omnikassa/badge.png?branch=develop)](https://coveralls.io/r/wp-pay-gateways/omnikassa?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/wp-pay-gateways/omnikassa/badge.svg?branch=master&service=github)](https://coveralls.io/github/wp-pay-gateways/omnikassa?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/wp-pay-gateways/omnikassa/v/stable.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/omnikassa/downloads.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/omnikassa/v/unstable.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![License](https://poser.pugx.org/wp-pay-gateways/omnikassa/license.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
+## Test Account
+
+| Option      | Value                                                               |
+| ----------- | ------------------------------------------------------------------- |
+| URL         | `https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet` |
+| Merchant ID | `002020000000001`                                                   |
+| Secret Key  | `002020000000001_KEY1`                                              |
+| Key Version | `1`                                                                 |
+
 
 ## Filters
 
@@ -29,6 +39,19 @@ function custom_omnikassa_payment_mean_brand_list( $list ) {
 
 add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_payment_mean_brand_list' );
 ```
+
+## Links
+
+*	https://dashboard.omnikassa.rabobank.nl/
+*	https://download.omnikassa.rabobank.nl/
+
+## Production Environment
+
+**Payment Server URL:** https://payment-webinit.omnikassa.rabobank.nl/paymentServlet  
+
+## Test Environment
+
+**Payment Server URL:** https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet  
 
 ## Documentation
 

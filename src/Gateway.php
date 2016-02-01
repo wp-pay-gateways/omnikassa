@@ -3,8 +3,9 @@
 /**
  * Title: OmniKassa
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.2
  * @since 1.0.0
@@ -48,6 +49,22 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	/////////////////////////////////////////////////
 
 	/**
+	 * Get supported payment methods
+	 *
+	 * @see Pronamic_WP_Pay_Gateway::get_supported_payment_methods()
+	 */
+	public function get_supported_payment_methods() {
+		return array(
+			Pronamic_WP_Pay_PaymentMethods::IDEAL        => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL,
+			Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD  => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA,
+			Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO,
+			Pronamic_WP_Pay_PaymentMethods::MISTER_CASH  => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC,
+		);
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
 	 * Start
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
@@ -72,7 +89,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			 * OmniKassa payment page. On the payment page, the
 			 * customer can choose from the payment methods
 			 * offered by the Rabo OmniKassa. These are the payment
-			 * methods: IDEAL, MINITIX, VISA, MASTERCARD,
+			 * methods: IDEAL, VISA, MASTERCARD,
 			 * MAESTRO, V PAY and BCMC.
 			 *
 			 * Exception: the register services INCASSO (direct debit),
@@ -84,7 +101,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			 * always populate the paymentMeanBrandList field with
 			 * all the payment methods you wish to offer (provided
 			 * these have been requested and activated): IDEAL,
-			 * MINITIX, VISA, MASTERCARD, MAESTRO, VPAY, BCMC,
+			 * VISA, MASTERCARD, MAESTRO, VPAY, BCMC,
 			 * INCASSO, ACCEPTGIRO, REMBOURS.
 			 *
 			 * If you let the customer choose the payment method
@@ -114,13 +131,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::MINITIX :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MINITIX );
-
-				break;
 			default :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MINITIX );
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA );
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );

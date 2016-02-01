@@ -3,8 +3,9 @@
 /**
  * Title: OmniKassa payment methods
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.0.0
  */
@@ -50,13 +51,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods {
 	 * @var string
 	 */
 	const BCMC = 'BCMC';
-
-	/**
-	 * Constant for the MiniTix payment method.
-	 *
-	 * @var string
-	 */
-	const MINITIX = 'MINITIX';
 
 	/**
 	 * Constant for the Incasso payment method.
