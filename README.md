@@ -19,6 +19,18 @@
 | Secret Key  | `002020000000001_KEY1`                                              |
 | Key Version | `1`                                                                 |
 
+## WP-CLI
+
+### Create test config
+
+```bash
+POST_ID=`wp post create --post_type=pronamic_gateway --post_title='OmniKassa - Test' --post_status=publish --porcelain`
+wp post meta update $POST_ID '_pronamic_gateway_id' 'rabobank-omnikassa'
+wp post meta update $POST_ID '_pronamic_gateway_mode' 'test'
+wp post meta update $POST_ID '_pronamic_gateway_omnikassa_merchant_id' '002020000000001'
+wp post meta update $POST_ID '_pronamic_gateway_omnikassa_secret_key' '002020000000001_KEY1'
+wp post meta update $POST_ID '_pronamic_gateway_omnikassa_key_version' '1'
+```
 
 ## Filters
 
