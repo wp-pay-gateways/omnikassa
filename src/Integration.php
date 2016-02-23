@@ -37,10 +37,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Integration extends Pronamic_WP_Pay_Gat
 		return 'Pronamic_WP_Pay_Gateways_OmniKassa_Settings';
 	}
 
-	public function get_gateway_class() {
-		return 'Pronamic_WP_Pay_Gateways_OmniKassa_Gateway';
-	}
-
 	/**
 	 * Get required settings for this integration.
 	 *
