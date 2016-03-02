@@ -157,12 +157,23 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
 			case self::TRANSACTION_SUCCES :
 				return Pronamic_WP_Pay_Statuses::SUCCESS;
 			case self::AUTHORIZATION_LIMIT :
+			case self::INVALID_MERCHANT_CONTRACT :
 			case self::AUTHORIZATION_REFUSED :
+			case self::INVALID_TRANSACTION :
+			case self::INVALID_STATUS :
+			case self::TRANSACTION_NOT_FOUND_IN_DATABASE :
+			case self::INVALID_FORMAT :
+			case self::FRAUD_SUSPICION :
+			case self::OPERATION_NOT_ALLOWED :
+			case self::SECURITY_BREACH_DETECTED :
 			case self::NUMBER_ATTEMPT_EXCEEDED :
+			case self::ACQUIRER_SERVER_TEMPORARILY_UNAVAILABLE :
+			case self::DUPLICATE_TRANSACTION :
 				return Pronamic_WP_Pay_Statuses::FAILURE;
 			case self::CANCELLATION_OF_PAYMENT :
 				return Pronamic_WP_Pay_Statuses::CANCELLED;
 			case self::PENDING_TRANSACTION :
+			case self::PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE :
 				return Pronamic_WP_Pay_Statuses::OPEN;
 			case self::REQUEST_TIMEOUT :
 				return Pronamic_WP_Pay_Statuses::EXPIRED;
