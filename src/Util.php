@@ -19,8 +19,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Util {
 	 * @param Pronamic_Pay_Payment              $payment
 	 */
 	public static function get_order_id( $order_id, Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment ) {
-		var_dump( func_get_args() );
-
 		// Replacements definition
 		$replacements = array(
 			'{order_id}'   => $data->get_order_id(),
