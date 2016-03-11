@@ -16,6 +16,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Config extends Pronamic_WP_Pay_GatewayC
 
 	public $key_version;
 
+	public $order_id;
+
 	public function get_gateway_class() {
 		return 'Pronamic_WP_Pay_Gateways_OmniKassa_Gateway';
 	}

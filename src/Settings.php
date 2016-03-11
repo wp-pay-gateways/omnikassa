@@ -23,6 +23,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 			'methods' => array( 'omnikassa' ),
 		);
 
+		// Advanced
+		$sections['omnikassa_advanced'] = array(
+			'title'   => __( 'Advanced', 'pronamic_ideal' ),
+			'methods' => array( 'omnikassa' ),
+		);
+
 		return $sections;
 	}
 
@@ -57,6 +63,33 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 			'classes'     => array( 'code' ),
 			'size'        => 5,
 			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
+		);
+
+		// Purchase ID
+		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
+			'section'     => 'omnikassa_advanced',
+			'meta_key'    => '_pronamic_gateway_omnikassa_order_id',
+			'title'       => __( 'Order ID', 'pronamic_ideal' ),
+			'type'        => 'text',
+			'classes'     => array( 'regular-text', 'code' ),
+			'tooltip'     => sprintf(
+				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
+				sprintf( '<code>%s</code>', 'orderId' )
+			),
+			'description' => sprintf(
+				'%s %s<br />%s',
+				__( 'Available tags:', 'pronamic_ideal' ),
+				sprintf(
+					'<code>%s</code> <code>%s</code>',
+					'{order_id}',
+					'{payment_id}'
+				),
+				sprintf(
+					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
+					'{order_id}'
+				)
+			),
 		);
 
 		return $fields;
