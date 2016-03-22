@@ -44,7 +44,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_merchant_id( $config->merchant_id );
 		$this->client->set_key_version( $config->key_version );
 		$this->client->set_secret_key( $config->secret_key );
-		$this->client->set_order_id( $config->order_id );
 	}
 
 	/////////////////////////////////////////////////
