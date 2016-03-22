@@ -7,10 +7,10 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.2.0
- * @since 1.2.0
+ * @version 1.1.6
+ * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Admin_GatewaySettings {
+class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_GatewaySettings {
 	public function __construct() {
 		add_filter( 'pronamic_pay_gateway_sections', array( $this, 'sections' ) );
 		add_filter( 'pronamic_pay_gateway_fields', array( $this, 'fields' ) );
@@ -20,6 +20,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Admin_
 		// iDEAL
 		$sections['omnikassa'] = array(
 			'title'   => __( 'OmniKassa', 'pronamic_ideal' ),
+			'methods' => array( 'omnikassa' ),
+		);
+
+		// Advanced
+		$sections['omnikassa_advanced'] = array(
+			'title'   => __( 'Advanced', 'pronamic_ideal' ),
 			'methods' => array( 'omnikassa' ),
 		);
 
@@ -57,6 +63,33 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Admin_
 			'classes'     => array( 'code' ),
 			'size'        => 5,
 			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
+		);
+
+		// Purchase ID
+		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
+			'section'     => 'omnikassa_advanced',
+			'meta_key'    => '_pronamic_gateway_omnikassa_order_id',
+			'title'       => __( 'Order ID', 'pronamic_ideal' ),
+			'type'        => 'text',
+			'classes'     => array( 'regular-text', 'code' ),
+			'tooltip'     => sprintf(
+				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
+				sprintf( '<code>%s</code>', 'orderId' )
+			),
+			'description' => sprintf(
+				'%s %s<br />%s',
+				__( 'Available tags:', 'pronamic_ideal' ),
+				sprintf(
+					'<code>%s</code> <code>%s</code>',
+					'{order_id}',
+					'{payment_id}'
+				),
+				sprintf(
+					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
+					'{order_id}'
+				)
+			),
 		);
 
 		return $fields;

@@ -8,6 +8,7 @@
  *
  * @author Remco Tolsma
  * @version 1.0.0
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gateways_ListenerInterface {
 	public static function listen() {

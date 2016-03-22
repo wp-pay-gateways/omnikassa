@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.2
+ * @version 1.1.6
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway {
@@ -76,7 +76,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 
 		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $data->get_language() ) );
 		$this->client->set_currency_numeric_code( $data->get_currency_numeric_code() );
-		$this->client->set_order_id( $data->get_order_id() );
+		$this->client->set_order_id( Pronamic_WP_Pay_Gateways_OmniKassa_Util::get_order_id( $this->client->get_order_id(), $data, $payment ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
 		$this->client->set_amount( $data->get_amount() );
