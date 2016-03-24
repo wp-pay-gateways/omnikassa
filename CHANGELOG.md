@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.1.7] - 2016-03-24
+- Fixed issue with dynamic order_id.
+
 ## [1.1.6] - 2016-03-22
 - Added product and dashboard URLs.
 - Added advanced 'Order ID' setting.
