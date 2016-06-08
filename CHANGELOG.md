@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.1.8] - 2016-06-08
+- Simplified the gateay payment start function.
+
 ## [1.1.7] - 2016-03-24
 - Fixed issue with dynamic order_id.
 
@@ -44,7 +47,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.6...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.8...HEAD
+[1.1.8]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.7...1.1.8
+[1.1.7]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.6...1.1.7
 [1.1.6]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.5...1.1.6
 [1.1.5]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.4...1.1.5
 [1.1.4]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.3...1.1.4

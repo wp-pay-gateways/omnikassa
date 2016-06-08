@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.7
+ * @version 1.1.8
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway {
@@ -70,19 +70,19 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 * @param Pronamic_Pay_PaymentDataInterface $data
 	 */
-	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
-		$payment->set_transaction_id( md5( time() . $data->get_order_id() ) );
+	public function start( Pronamic_Pay_Payment $payment ) {
+		$payment->set_transaction_id( md5( time() . $payment->get_order_id() ) );
 		$payment->set_action_url( $this->client->get_action_url() );
 
-		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $data->get_language() ) );
-		$this->client->set_currency_numeric_code( $data->get_currency_numeric_code() );
-		$this->client->set_order_id( Pronamic_WP_Pay_Gateways_OmniKassa_Util::get_order_id( $this->config->order_id, $data, $payment ) );
+		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $payment->get_language() ) );
+		$this->client->set_currency_numeric_code( $payment->get_currency_numeric_code() );
+		$this->client->set_order_id( Pronamic_WP_Pay_Gateways_OmniKassa_Util::get_order_id( $this->config->order_id, $payment ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
-		$this->client->set_amount( $data->get_amount() );
+		$this->client->set_amount( $payment->get_amount() );
 		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
-		switch ( $payment_method ) {
+		switch ( $payment->get_method() ) {
 			/*
 			 * If this field is not supplied in the payment request, then
 			 * by default the customer will be redirected to the Rabo
