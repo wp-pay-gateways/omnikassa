@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Reüel van der Steege
- * @version 1.1.6
+ * @version 1.1.8
  * @since 1.1.6
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Util {
