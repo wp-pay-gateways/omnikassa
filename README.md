@@ -67,5 +67,14 @@ add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_
 
 ## Documentation
 
-*	[Integration Guide Rabo OmniKassa, Version 7.1, April 2014](http://pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_rabo_omnikassa_en_version_7_1_april_2014_final_2_0_29637101.pdf)
-*	[Integratiehandleiding Rabo OmniKassa, versie 7.1, april 2014](http://pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_nl_12_2013_29420242.pdf)
+| Title                                                   | Language | Version | Date    |
+| ------------------------------------------------------- | -------- | ------- | ------- |
+| [Integration Guide Rabo OmniKassa][doc-en-sep-2014]     | EN       | `7.2`   | 2014-09 |
+| [Integratiehandleiding Rabo OmniKassa][doc-en-sep-2014] | NL       | `7.2`   | 2014-09 |
+| [Integration Guide Rabo OmniKassa][doc-en-apr-2014]     | EN       | `7.1`   | 2014-04 |
+| [Integratiehandleiding Rabo OmniKassa][doc-nl-apr-2014] | NL       | `7.1`   | 2014-04 |
+
+[doc-en-sep-2014]: https://www.pronamic.nl/wp-content/uploads/2016/06/integrationguide_29717880.pdf
+[doc-nl-sep-2014]: https://www.pronamic.nl/wp-content/uploads/2016/06/integratiehandleiding_29717875.pdf
+[doc-en-apr-2014]: https://www.pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_rabo_omnikassa_en_version_7_1_april_2014_final_2_0_29637101.pdf
+[doc-nl-apr-2014]: https://www.pronamic.nl/wp-content/uploads/2014/07/integratiehandleiding_nl_12_2013_29420242.pdf
