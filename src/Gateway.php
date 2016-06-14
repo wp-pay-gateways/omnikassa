@@ -71,7 +71,14 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * @param Pronamic_Pay_PaymentDataInterface $data
 	 */
 	public function start( Pronamic_Pay_Payment $payment ) {
-		$payment->set_transaction_id( md5( $payment->get_entrance_code() . $payment->get_order_id() ) );
+		$transaction_reference = $payment->get_meta( 'omnikassa_transaction_reference' );
+
+		if ( empty( $transaction_reference ) ) {
+			$transaction_reference = md5( uniqid( '', true ) );
+
+			$payment->set_meta( 'omnikassa_transaction_reference', $transaction_reference );
+		}
+
 		$payment->set_action_url( $this->client->get_action_url() );
 
 		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $payment->get_language() ) );
@@ -80,7 +87,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
 		$this->client->set_amount( $payment->get_amount() );
-		$this->client->set_transaction_reference( $payment->get_transaction_id() );
+		$this->client->set_transaction_reference( $transaction_reference );
 
 		switch ( $payment->get_method() ) {
 			/*

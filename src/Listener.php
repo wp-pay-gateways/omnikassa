@@ -23,7 +23,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gatewa
 
 			$transaction_reference = $data['transactionReference'];
 
-			$payment = get_pronamic_payment_by_transaction_id( $transaction_reference );
+			$payment = get_pronamic_payment_by_meta( '_pronamic_payment_omnikassa_transaction_reference', $transaction_reference );
 
 			Pronamic_WP_Pay_Plugin::update_payment( $payment );
 		}
