@@ -205,7 +205,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public function __construct() {
 		$this->payment_mean_brand_list = array();
 
-		$this->set_interface_version( self::INTERFACE_VERSION_HP_2_12 );
+		$this->set_interface_version( self::INTERFACE_VERSION_HP_1_0 );
 	}
 
 	//////////////////////////////////////////////////
