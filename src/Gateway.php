@@ -58,7 +58,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			Pronamic_WP_Pay_PaymentMethods::IDEAL        => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL,
 			Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD  => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA,
 			Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO,
-			Pronamic_WP_Pay_PaymentMethods::MISTER_CASH  => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC,
+			Pronamic_WP_Pay_PaymentMethods::BANCONTACT   => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC,
 		);
 	}
 
@@ -134,6 +134,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
 
 				break;
+			case Pronamic_WP_Pay_PaymentMethods::BANCONTACT :
 			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
 
