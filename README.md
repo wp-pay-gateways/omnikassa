@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/omnikassa/downloads.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/omnikassa/v/unstable.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![License](https://poser.pugx.org/wp-pay-gateways/omnikassa/license.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 ## Test Account
 
