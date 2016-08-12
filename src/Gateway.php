@@ -55,10 +55,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 */
 	public function get_supported_payment_methods() {
 		return array(
-			Pronamic_WP_Pay_PaymentMethods::IDEAL        => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL,
-			Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD  => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA,
-			Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO,
-			Pronamic_WP_Pay_PaymentMethods::BANCONTACT   => Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC,
+			Pronamic_WP_Pay_PaymentMethods::IDEAL,
+			Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD,
+			Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT,
+			Pronamic_WP_Pay_PaymentMethods::BANCONTACT,
 		);
 	}
 
