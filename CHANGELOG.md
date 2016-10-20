@@ -7,6 +7,10 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.0] - 2016-10-20
+- Use the new $payment->format_string() function.
+- Added support for new Bancontact constant.
+
 ## [1.1.9] - 2016-06-14
 - Fixed transaction ID/reference inconsistency.
 
@@ -50,7 +54,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.9...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.9...1.2.0
 [1.1.9]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.8...1.1.9
 [1.1.8]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.7...1.1.8
 [1.1.7]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.6...1.1.7

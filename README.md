@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/omnikassa/downloads.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/omnikassa/v/unstable.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
 [![License](https://poser.pugx.org/wp-pay-gateways/omnikassa/license.svg)](https://packagist.org/packages/wp-pay-gateways/omnikassa)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 ## Test Account
 
@@ -70,7 +70,7 @@ add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_
 | Title                                                   | Language | Version | Date    |
 | ------------------------------------------------------- | -------- | ------- | ------- |
 | [Integration Guide Rabo OmniKassa][doc-en-sep-2014]     | EN       | `7.2`   | 2014-09 |
-| [Integratiehandleiding Rabo OmniKassa][doc-en-sep-2014] | NL       | `7.2`   | 2014-09 |
+| [Integratiehandleiding Rabo OmniKassa][doc-nl-sep-2014] | NL       | `7.2`   | 2014-09 |
 | [Integration Guide Rabo OmniKassa][doc-en-apr-2014]     | EN       | `7.1`   | 2014-04 |
 | [Integratiehandleiding Rabo OmniKassa][doc-nl-apr-2014] | NL       | `7.1`   | 2014-04 |
 

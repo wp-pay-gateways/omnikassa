@@ -72,6 +72,13 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	const INTERFACE_VERSION_HP_1_0 = 'HP_1.0';
 
 	/**
+	 * Interface version HP 2.12
+	 *
+	 * @var string
+	 */
+	const INTERFACE_VERSION_HP_2_12 = 'HP_2.12';
+
+	/**
 	 * Hash algorithm SHA256 indicator
 	 *
 	 * @var string
