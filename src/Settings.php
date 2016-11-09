@@ -87,7 +87,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 				),
 				sprintf(
 					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
-					'{order_id}'
+					'{payment_id}'
 				)
 			),
 		);
