@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.6
+ * @version 1.2.1
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_GatewaySettings {
@@ -87,7 +87,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 				),
 				sprintf(
 					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
-					'{order_id}'
+					'{payment_id}'
 				)
 			),
 		);

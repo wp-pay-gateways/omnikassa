@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.2.0
+ * @version 1.2.1
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway {
@@ -119,6 +119,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			 * redirect the customer directly to the payment page for
 			 * this payment method.
 			 */
+			case Pronamic_WP_Pay_PaymentMethods::BANCONTACT :
+			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
+
+				break;
 			case Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD :
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
@@ -130,13 +135,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::IDEAL :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
+			case Pronamic_WP_Pay_PaymentMethods::MAESTRO :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::BANCONTACT :
-			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
+			case Pronamic_WP_Pay_PaymentMethods::IDEAL :
+				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
 
 				break;
 			default :
