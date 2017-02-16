@@ -79,6 +79,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			$payment->set_meta( 'omnikassa_transaction_reference', $transaction_reference );
 		}
 
+		$payment->set_transaction_id( $transaction_reference );
 		$payment->set_action_url( $this->client->get_action_url() );
 
 		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $payment->get_language() ) );
