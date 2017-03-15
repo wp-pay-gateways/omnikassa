@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.2] - 2017-03-15
+- Set payment transaction ID to transaction reference (e.g. for payment notes and merge tags).
+
 ## [1.2.1] - 2016-11-16
 - Added support for Maestro payment method.
 - Default order ID uses payment ID in `format_string()`.
@@ -58,7 +61,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.1...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.2...HEAD
+[1.2.2]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.9...1.2.0
 [1.1.9]: https://github.com/wp-pay-gateways/omnikassa/compare/1.1.8...1.1.9
