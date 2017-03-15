@@ -67,8 +67,8 @@ add_filter( 'pronamic_pay_omnikassa_payment_mean_brand_list', 'custom_omnikassa_
 
 ## Documentation
 
-| Title                                                       | Language | Version | Date    |
-| ----------------------------------------------------------- | -------- | ------- | ------- |
+| Title                                         | Language | Version | Date    |
+| --------------------------------------------- | -------- | ------- | ------- |
 | [Integration Guide Rabo OmniKassa][1]         | EN       | `7.3`   | 2016-12 |
 | [Integratiehandleiding Rabo OmniKassa][2]     | NL       | `7.3`   | 2016-12 |
 | ~~[Integration Guide Rabo OmniKassa][3]~~     | EN       | `7.2`   | 2014-09 |
