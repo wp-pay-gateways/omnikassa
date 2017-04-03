@@ -179,7 +179,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * @param Pronamic_Pay_Payment $payment
 	 */
 	public function update_status( Pronamic_Pay_Payment $payment ) {
-		$input_data = filter_input( INPUT_POST, 'Data', FILTER_SANITIZE_STRING );
+		$input_data = filter_input( INPUT_POST, 'Data' );
 		$input_seal = filter_input( INPUT_POST, 'Seal', FILTER_SANITIZE_STRING );
 
 		$data = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $input_data );
