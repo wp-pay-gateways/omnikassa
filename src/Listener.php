@@ -3,11 +3,11 @@
 /**
  * Title: OmniKassa listener
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2017
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.9
+ * @version 1.2.3
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gateways_ListenerInterface {
@@ -17,7 +17,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Listener implements Pronamic_Pay_Gatewa
 				&&
 			filter_has_var( INPUT_POST, 'Seal' )
 		) {
-			$input_data = filter_input( INPUT_POST, 'Data', FILTER_SANITIZE_STRING );
+			$input_data = filter_input( INPUT_POST, 'Data' );
 
 			$data = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $input_data );
 
