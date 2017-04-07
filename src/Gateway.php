@@ -3,11 +3,11 @@
 /**
  * Title: OmniKassa
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2017
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.2.2
+ * @version 1.2.3
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway {
