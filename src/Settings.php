@@ -65,6 +65,17 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
 		);
 
+		// Transaction feedback
+		$fields[] = array(
+			'section' => 'omnikassa',
+			'title'   => __( 'Transaction feedback', 'pronamic_ideal' ),
+			'type'    => 'description',
+			'html'    => sprintf(
+				'<span class="dashicons dashicons-yes"></span> %s',
+				__( 'Payment status updates will be processed without any additional configuration.', 'pronamic_ideal' )
+			),
+		);
+
 		// Purchase ID
 		$fields[] = array(
 			'filter'      => FILTER_SANITIZE_STRING,
