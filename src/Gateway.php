@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Payments\PaymentDataInterface;
 
 /**
  * Title: OmniKassa
@@ -68,7 +69,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * Start
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
-	 * @param Pronamic_Pay_PaymentDataInterface $data
+	 *
+	 * @param PaymentDataInterface $data
 	 */
 	public function start( Pronamic_Pay_Payment $payment ) {
 		$transaction_reference = $payment->get_meta( 'omnikassa_transaction_reference' );
