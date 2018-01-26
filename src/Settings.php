@@ -1,16 +1,20 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use Pronamic\WordPress\Pay\Core\GatewaySettings;
+
 /**
  * Title: iDEAL gateway settings
  * Description:
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.2.1
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_GatewaySettings {
+class Settings extends GatewaySettings {
 	public function __construct() {
 		add_filter( 'pronamic_pay_gateway_sections', array( $this, 'sections' ) );
 		add_filter( 'pronamic_pay_gateway_fields', array( $this, 'fields' ) );
@@ -35,22 +39,22 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Settings extends Pronamic_WP_Pay_Gatewa
 	public function fields( array $fields ) {
 		// Merchant ID
 		$fields[] = array(
-			'filter'      => FILTER_SANITIZE_STRING,
-			'section'     => 'omnikassa',
-			'meta_key'    => '_pronamic_gateway_omnikassa_merchant_id',
-			'title'       => __( 'Merchant ID', 'pronamic_ideal' ),
-			'type'        => 'text',
-			'classes'     => array( 'code' ),
+			'filter'   => FILTER_SANITIZE_STRING,
+			'section'  => 'omnikassa',
+			'meta_key' => '_pronamic_gateway_omnikassa_merchant_id',
+			'title'    => __( 'Merchant ID', 'pronamic_ideal' ),
+			'type'     => 'text',
+			'classes'  => array( 'code' ),
 		);
 
 		// Secret Key
 		$fields[] = array(
-			'filter'      => FILTER_SANITIZE_STRING,
-			'section'     => 'omnikassa',
-			'meta_key'    => '_pronamic_gateway_omnikassa_secret_key',
-			'title'       => __( 'Secret Key', 'pronamic_ideal' ),
-			'type'        => 'text',
-			'classes'     => array( 'large-text', 'code' ),
+			'filter'   => FILTER_SANITIZE_STRING,
+			'section'  => 'omnikassa',
+			'meta_key' => '_pronamic_gateway_omnikassa_secret_key',
+			'title'    => __( 'Secret Key', 'pronamic_ideal' ),
+			'type'     => 'text',
+			'classes'  => array( 'large-text', 'code' ),
 		);
 
 		// Key Version

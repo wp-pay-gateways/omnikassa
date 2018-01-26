@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
 /**
  * Title: OmniKassa payment mean brand list
  * Description:
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.1.0
- * @since 1.1.0
+ * @since   1.1.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList {
+class PaymentMeanBrandList {
 	/**
 	 * List
 	 *
@@ -22,6 +24,8 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList {
 
 	/**
 	 * Constructs and initialize a payment methods list
+	 *
+	 * @parm array $list
 	 */
 	public function __construct( array $list = array() ) {
 		$this->list = $list;
@@ -32,7 +36,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList {
 	/**
 	 * Add payment method
 	 *
-	 * @param string $payment_method
+	 * @param string $payment_mean_brand
 	 */
 	public function add_payment_mean_brand( $payment_mean_brand ) {
 		$this->list[] = $payment_mean_brand;

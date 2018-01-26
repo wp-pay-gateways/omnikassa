@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
 /**
  * Title: OmniKassa locale helper
  * Description:
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.1.3
- * @since 1.1.3
+ * @since   1.1.3
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper {
+class LocaleHelper {
 	/**
 	 * Get OmniKassa locale by the specified WordPress locale
 	 *
@@ -19,14 +21,14 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper {
 	public static function transform( $locale ) {
 		// Supported locales
 		$supported = array(
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::CS,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::CY,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::DE,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::FR,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::NL,
-			Pronamic_WP_Pay_Gateways_OmniKassa_Locales::SK,
+			Locales::CS,
+			Locales::CY,
+			Locales::DE,
+			Locales::EN,
+			Locales::ES,
+			Locales::FR,
+			Locales::NL,
+			Locales::SK,
 		);
 
 		// Sub string

@@ -1,5 +1,10 @@
 <?php
-use Pronamic\WordPress\Pay\Payments\PaymentDataInterface;
+
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use Pronamic\WordPress\Pay\Core\Gateway as Core_Gateway;
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
+use Pronamic\WordPress\Pay\Payments\Payment;
 
 /**
  * Title: OmniKassa
@@ -7,15 +12,15 @@ use Pronamic\WordPress\Pay\Payments\PaymentDataInterface;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.2.3
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway {
+class Gateway extends Core_Gateway {
 	/**
 	 * The OmniKassa client object
 	 *
-	 * @var Pronamic_WP_Pay_Gateways_OmniKassa_Client
+	 * @var Client
 	 */
 	private $client;
 
@@ -24,21 +29,22 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	/**
 	 * Constructs and initializes an OmniKassa gateway
 	 *
-	 * @param Pronamic_WP_Pay_Gateways_OmniKassa_Config $config
+	 * @param Config $config
 	 */
-	public function __construct( Pronamic_WP_Pay_Gateways_OmniKassa_Config $config ) {
+	public function __construct( Config $config ) {
 		parent::__construct( $config );
 
-		$this->set_method( Pronamic_WP_Pay_Gateway::METHOD_HTML_FORM );
+		$this->set_method( Gateway::METHOD_HTML_FORM );
 		$this->set_has_feedback( true );
 		$this->set_amount_minimum( 0.01 );
 
 		// Client
-		$this->client = new Pronamic_WP_Pay_Gateways_OmniKassa_Client();
+		$this->client = new Client();
 
-		$action_url = Pronamic_WP_Pay_Gateways_OmniKassa_Client::ACTION_URL_PRUDCTION;
-		if ( Pronamic_IDeal_IDeal::MODE_TEST === $config->mode ) {
-			$action_url = Pronamic_WP_Pay_Gateways_OmniKassa_Client::ACTION_URL_TEST;
+		$action_url = Client::ACTION_URL_PRUDCTION;
+
+		if ( Gateway::MODE_TEST === $config->mode ) {
+			$action_url = Client::ACTION_URL_TEST;
 		}
 
 		$this->client->set_action_url( $action_url );
@@ -56,10 +62,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 */
 	public function get_supported_payment_methods() {
 		return array(
-			Pronamic_WP_Pay_PaymentMethods::IDEAL,
-			Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD,
-			Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT,
-			Pronamic_WP_Pay_PaymentMethods::BANCONTACT,
+			PaymentMethods::IDEAL,
+			PaymentMethods::CREDIT_CARD,
+			PaymentMethods::DIRECT_DEBIT,
+			PaymentMethods::BANCONTACT,
 		);
 	}
 
@@ -70,9 +76,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 *
-	 * @param PaymentDataInterface $data
+	 * @param Payment $payment
 	 */
-	public function start( Pronamic_Pay_Payment $payment ) {
+	public function start( Payment $payment ) {
 		$transaction_reference = $payment->get_meta( 'omnikassa_transaction_reference' );
 
 		if ( empty( $transaction_reference ) ) {
@@ -84,7 +90,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 		$payment->set_transaction_id( $transaction_reference );
 		$payment->set_action_url( $this->client->get_action_url() );
 
-		$this->client->set_customer_language( Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $payment->get_language() ) );
+		$this->client->set_customer_language( LocaleHelper::transform( $payment->get_language() ) );
 		$this->client->set_currency_numeric_code( $payment->get_currency_numeric_code() );
 		$this->client->set_order_id( $payment->format_string( $this->config->order_id ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
@@ -122,40 +128,40 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 			 * redirect the customer directly to the payment page for
 			 * this payment method.
 			 */
-			case Pronamic_WP_Pay_PaymentMethods::BANCONTACT :
-			case Pronamic_WP_Pay_PaymentMethods::MISTER_CASH :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
+			case PaymentMethods::BANCONTACT :
+			case PaymentMethods::MISTER_CASH :
+				$this->client->add_payment_mean_brand( Methods::BCMC );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VPAY );
+			case PaymentMethods::CREDIT_CARD :
+				$this->client->add_payment_mean_brand( Methods::MAESTRO );
+				$this->client->add_payment_mean_brand( Methods::MASTERCARD );
+				$this->client->add_payment_mean_brand( Methods::VISA );
+				$this->client->add_payment_mean_brand( Methods::VPAY );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
+			case PaymentMethods::DIRECT_DEBIT :
+				$this->client->add_payment_mean_brand( Methods::INCASSO );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::MAESTRO :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
+			case PaymentMethods::MAESTRO :
+				$this->client->add_payment_mean_brand( Methods::MAESTRO );
 
 				break;
-			case Pronamic_WP_Pay_PaymentMethods::IDEAL :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
+			case PaymentMethods::IDEAL :
+				$this->client->add_payment_mean_brand( Methods::IDEAL );
 
 				break;
 			default :
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VISA );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MASTERCARD );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::MAESTRO );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::VPAY );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::BCMC );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::ACCEPTGIRO );
-				$this->client->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::REMBOURS );
+				$this->client->add_payment_mean_brand( Methods::IDEAL );
+				$this->client->add_payment_mean_brand( Methods::VISA );
+				$this->client->add_payment_mean_brand( Methods::MASTERCARD );
+				$this->client->add_payment_mean_brand( Methods::MAESTRO );
+				$this->client->add_payment_mean_brand( Methods::VPAY );
+				$this->client->add_payment_mean_brand( Methods::BCMC );
+				$this->client->add_payment_mean_brand( Methods::INCASSO );
+				$this->client->add_payment_mean_brand( Methods::ACCEPTGIRO );
+				$this->client->add_payment_mean_brand( Methods::REMBOURS );
 
 				break;
 		}
@@ -167,7 +173,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	 * Get the output HTML
 	 *
 	 * @since 1.1.2
-	 * @see Pronamic_WP_Pay_Gateway::get_output_html()
+	 * @see   Pronamic_WP_Pay_Gateway::get_output_html()
 	 */
 	public function get_output_fields() {
 		return $this->client->get_fields();
@@ -178,21 +184,21 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Gateway extends Pronamic_WP_Pay_Gateway
 	/**
 	 * Update status of the specified payment
 	 *
-	 * @param Pronamic_Pay_Payment $payment
+	 * @param Payment $payment
 	 */
-	public function update_status( Pronamic_Pay_Payment $payment ) {
+	public function update_status( Payment $payment ) {
 		$input_data = filter_input( INPUT_POST, 'Data' );
 		$input_seal = filter_input( INPUT_POST, 'Seal', FILTER_SANITIZE_STRING );
 
-		$data = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $input_data );
+		$data = Client::parse_piped_string( $input_data );
 
-		$seal = Pronamic_WP_Pay_Gateways_OmniKassa_Client::compute_seal( $input_data, $this->config->secret_key );
+		$seal = Client::compute_seal( $input_data, $this->config->secret_key );
 
 		// Check if the posted seal is equal to our seal
 		if ( 0 === strcasecmp( $input_seal, $seal ) ) {
 			$response_code = $data['responseCode'];
 
-			$status = Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes::transform( $response_code );
+			$status = ResponseCodes::transform( $response_code );
 
 			// Set the status of the payment
 			$payment->set_status( $status );

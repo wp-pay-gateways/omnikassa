@@ -1,8 +1,10 @@
 <?php
 
+use Pronamic\WordPress\Pay\Gateways\OmniKassa\Client;
+
 class Pronamic_Pay_Gateways_OmniKassa_TestPaymentRequestData extends WP_UnitTestCase {
 	function test_data() {
-		$omnikassa = new Pronamic_WP_Pay_Gateways_OmniKassa_Client();
+		$omnikassa = new Client();
 
 		$omnikassa->set_amount( 0.55 );
 		$omnikassa->set_currency_numeric_code( 978 );
@@ -15,7 +17,7 @@ class Pronamic_Pay_Gateways_OmniKassa_TestPaymentRequestData extends WP_UnitTest
 
 		$string = 'amount=55|currencyCode=978|merchantId=011223744550001|normalReturnUrl=http://www.normalreturnurl.nl|automaticResponseUrl=http://www.automaticresponseurl.nl|transactionReference=534654|orderId=201208345|keyVersion=1';
 
-		$expected = Pronamic_WP_Pay_Gateways_OmniKassa_Client::parse_piped_string( $string );
+		$expected = Client::parse_piped_string( $string );
 		$actual = $omnikassa->get_data_array();
 
 		$this->assertEquals( $expected, $actual );

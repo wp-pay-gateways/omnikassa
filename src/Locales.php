@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
 /**
  * Title: OmniKassa locales
  * Description:
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.1.3
- * @since 1.1.3
+ * @since   1.1.3
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_Locales {
+class Locales {
 	/**
 	 * Czech (Čeština)
 	 *
