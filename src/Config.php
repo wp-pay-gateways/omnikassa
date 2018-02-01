@@ -22,8 +22,4 @@ class Config extends GatewayConfig {
 	public $key_version;
 
 	public $order_id;
-
-	public function get_gateway_class() {
-		return __NAMESPACE__ . '\Gateway';
-	}
 }
