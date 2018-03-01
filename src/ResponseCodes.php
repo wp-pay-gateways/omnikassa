@@ -147,8 +147,6 @@ class ResponseCodes {
 	 */
 	const PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE = '99';
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Transform an OmniKassa response code to an more global status
 	 *

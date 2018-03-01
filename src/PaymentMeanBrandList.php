@@ -20,8 +20,6 @@ class PaymentMeanBrandList {
 	 */
 	private $list;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initialize a payment methods list
 	 *
@@ -31,8 +29,6 @@ class PaymentMeanBrandList {
 		$this->list = $list;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Add payment method
 	 *
@@ -41,8 +37,6 @@ class PaymentMeanBrandList {
 	public function add_payment_mean_brand( $payment_mean_brand ) {
 		$this->list[] = $payment_mean_brand;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Create a string representation of this payment mean brand list

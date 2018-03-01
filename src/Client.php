@@ -34,8 +34,6 @@ class Client {
 	 */
 	const ACTION_URL_PRUDCTION = 'https://payment-webinit.omnikassa.rabobank.nl/paymentServlet';
 
-	//////////////////////////////////////////////////
-
 	const ISO_639_1_ENGLISH = 'en';
 
 	const ISO_639_1_FRENCH = 'fr';
@@ -47,8 +45,6 @@ class Client {
 	const ISO_639_1_SPANISH = 'es';
 
 	const ISO_639_1_DUTCH = 'nl';
-
-	//////////////////////////////////////////////////
 
 	public static function get_supported_language_codes() {
 		return array(
@@ -66,8 +62,6 @@ class Client {
 
 		return in_array( $language, $languages, true );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Interface version HP 1.0
@@ -90,8 +84,6 @@ class Client {
 	 */
 	const HASH_ALGORITHM_SHA256 = 'sha256';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * The action URL
 	 *
@@ -99,16 +91,12 @@ class Client {
 	 */
 	private $action_url;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * The interface version
 	 *
 	 * @var string
 	 */
 	private $interface_version;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Currency code in ISO 4217-Numeric codification
@@ -155,8 +143,6 @@ class Client {
 	 */
 	private $key_version;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Automatic response URL
 	 *
@@ -193,16 +179,12 @@ class Client {
 	 */
 	private $expiration_date;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Secret key
 	 *
 	 * @var string
 	 */
 	private $secret_key;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Constructs and initalize an OmniKassa object
@@ -212,8 +194,6 @@ class Client {
 
 		$this->set_interface_version( self::INTERFACE_VERSION_HP_1_0 );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get the action URL
@@ -233,8 +213,6 @@ class Client {
 		$this->action_url = $url;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get interface version
 	 *
@@ -252,8 +230,6 @@ class Client {
 	public function set_interface_version( $interface_version ) {
 		$this->interface_version = $interface_version;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get the currency numeric code
@@ -273,8 +249,6 @@ class Client {
 		$this->currency_numeric_code = $currency_numeric_code;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get merchant ID
 	 *
@@ -292,8 +266,6 @@ class Client {
 	public function set_merchant_id( $merchant_id ) {
 		$this->merchant_id = $merchant_id;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get normal return URL
@@ -314,8 +286,6 @@ class Client {
 	public function set_normal_return_url( $normal_return_url ) {
 		$this->normal_return_url = $normal_return_url;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get amount
@@ -344,8 +314,6 @@ class Client {
 		$this->amount = $amount;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get transaction reference
 	 *
@@ -365,8 +333,6 @@ class Client {
 		$this->transaction_reference = DataHelper::filter_an( $transaction_reference, 35 );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get key version
 	 *
@@ -384,8 +350,6 @@ class Client {
 	public function set_key_version( $key_version ) {
 		$this->key_version = $key_version;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get automatic response URL
@@ -407,8 +371,6 @@ class Client {
 		$this->automatic_response_url = $automatic_response_url;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get customer language
 	 *
@@ -426,8 +388,6 @@ class Client {
 	public function set_customer_language( $customer_language ) {
 		$this->customer_language = $customer_language;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Add the specified payment mean brand to the payment mean brand list
@@ -447,8 +407,6 @@ class Client {
 		return apply_filters( 'pronamic_pay_omnikassa_payment_mean_brand_list', implode( ', ', $this->payment_mean_brand_list ) );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get order ID
 	 *
@@ -466,8 +424,6 @@ class Client {
 	public function set_order_id( $order_id ) {
 		$this->order_id = $order_id;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get expiration date
@@ -502,8 +458,6 @@ class Client {
 		$this->expiration_date = $date;
 	}
 
-	//////////////////////////////////////////////////
-
 	public function get_data_array() {
 		// Payment Request - required fields
 		$required_fields = array(
@@ -533,8 +487,6 @@ class Client {
 		return $data;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get data
 	 *
@@ -545,8 +497,6 @@ class Client {
 
 		return self::create_piped_string( $data );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get secret key
@@ -565,8 +515,6 @@ class Client {
 	public function set_secret_key( $secret_key ) {
 		$this->secret_key = $secret_key;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get seal
@@ -595,8 +543,6 @@ class Client {
 		return hash( self::HASH_ALGORITHM_SHA256, $value );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get fields
 	 *
@@ -610,8 +556,6 @@ class Client {
 			'Seal'             => $this->get_seal(),
 		);
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Create an piped string for the specified data array
@@ -644,8 +588,6 @@ class Client {
 
 		return $data;
 	}
-
-	//////////////////////////////////////////////////
 
 	public function get_response_code_description() {
 		return array(

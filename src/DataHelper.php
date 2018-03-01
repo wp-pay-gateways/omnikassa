@@ -35,8 +35,6 @@ class DataHelper {
 	 */
 	private static $characters_an = array( 'A-Z', 'a-z', '0-9' );
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Filter N characters
 	 *
