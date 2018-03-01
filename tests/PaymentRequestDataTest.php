@@ -1,8 +1,10 @@
 <?php
 
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\Client;
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 
-class Pronamic_Pay_Gateways_OmniKassa_TestPaymentRequestData extends WP_UnitTestCase {
+use WP_UnitTestCase;
+
+class TestPaymentRequestData extends WP_UnitTestCase {
 	function test_data() {
 		$omnikassa = new Client();
 

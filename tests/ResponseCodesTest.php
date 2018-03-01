@@ -1,6 +1,9 @@
 <?php
+
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use PHPUnit_Framework_TestCase;
 use Pronamic\WordPress\Pay\Core\Statuses;
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\ResponseCodes;
 
 /**
  * Title: OmniKassa response codes test
@@ -11,7 +14,7 @@ use Pronamic\WordPress\Pay\Gateways\OmniKassa\ResponseCodes;
  * @author Remco Tolsma
  * @version 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodesTest extends PHPUnit_Framework_TestCase {
+class ResponseCodesTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test transform.
 	 *

@@ -1,6 +1,8 @@
 <?php
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\LocaleHelper;
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\Locales;
+
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use PHPUnit_Framework_TestCase;
 
 /**
  * Title: OmniKassa locale helper test
@@ -12,7 +14,7 @@ use Pronamic\WordPress\Pay\Gateways\OmniKassa\Locales;
  * @version 1.1.3
  * @since 1.1.3
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelperTest extends PHPUnit_Framework_TestCase {
+class LocaleHelperTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test transform.
 	 *

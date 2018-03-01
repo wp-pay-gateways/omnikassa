@@ -1,6 +1,8 @@
 <?php
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\PaymentMeanBrandList;
-use Pronamic\WordPress\Pay\Gateways\OmniKassa\Methods;
+
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use WP_UnitTestCase;
 
 /**
  * Title: OmniKassa payment mean brand list test
@@ -12,7 +14,7 @@ use Pronamic\WordPress\Pay\Gateways\OmniKassa\Methods;
  * @version 1.1.0
  * @since 1.1.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandListTest extends WP_UnitTestCase {
+class PaymentMeanBrandListTest extends WP_UnitTestCase {
 	/**
 	 * Test constructor
 	 */
