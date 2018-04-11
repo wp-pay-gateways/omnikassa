@@ -28,6 +28,20 @@ class Listener {
 
 		$payment = get_pronamic_payment_by_meta( '_pronamic_payment_omnikassa_transaction_reference', $transaction_reference );
 
+		if ( null === $payment ) {
+			return;
+		}
+
+		// Add note.
+		$note = sprintf(
+			/* translators: %s: OmniKassa */
+			__( 'Webhook requested by %s.', 'pronamic_ideal' ),
+			__( 'OmniKassa', 'pronamic_ideal' )
+		);
+
+		$payment->add_note( $note );
+
+		// Update payment.
 		Plugin::update_payment( $payment );
 	}
 }
