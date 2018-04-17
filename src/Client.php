@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 
-use DateTime;
+use Pronamic\WordPress\Pay\Core\DateTime;
 use Pronamic\WordPress\Pay\Core\Util as Core_Util;
 
 /**
