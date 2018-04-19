@@ -82,7 +82,7 @@ class Gateway extends Core_Gateway {
 		$this->client->set_order_id( $payment->format_string( $this->config->order_id ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
-		$this->client->set_amount( $payment->get_amount() );
+		$this->client->set_amount( $payment->get_amount()->get_amount() );
 		$this->client->set_transaction_reference( $transaction_reference );
 
 		switch ( $payment->get_method() ) {
