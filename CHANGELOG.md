@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [2.0.0] - 2018-05-11
+- Switched to PHP namespaces.
+
 ## [1.2.3] - 2017-04-07
 - Fixed incorrect seal calculations.
 
@@ -64,7 +67,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.3...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/omnikassa/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.3...2.0.0
 [1.2.3]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.2...1.2.3
 [1.2.2]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/wp-pay-gateways/omnikassa/compare/1.2.0...1.2.1

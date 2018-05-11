@@ -1,23 +1,27 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use PHPUnit_Framework_TestCase;
+
 /**
  * Title: OmniKassa locale helper test
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.1.3
- * @since 1.1.3
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.1.3
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelperTest extends PHPUnit_Framework_TestCase {
+class LocaleHelperTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test transform.
 	 *
 	 * @dataProvider status_matrix_provider
 	 */
 	public function test_transform( $locale, $expected ) {
-		$language = Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelper::transform( $locale );
+		$language = LocaleHelper::transform( $locale );
 
 		$this->assertEquals( $expected, $language );
 	}
@@ -25,51 +29,51 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_LocaleHelperTest extends PHPUnit_Framew
 	public function status_matrix_provider() {
 		return array(
 			// Czech
-			array( 'cs_CZ', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::CS ),
+			array( 'cs_CZ', Locales::CS ),
 			// Welsh
-			array( 'cy', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::CY ),
+			array( 'cy', Locales::CY ),
 			// German
-			array( 'de_DE', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::DE ),
+			array( 'de_DE', Locales::DE ),
 			// German (Switzerland)
-			array( 'de_CH', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::DE ),
+			array( 'de_CH', Locales::DE ),
 			// English
-			array( 'en_US', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN ),
+			array( 'en_US', Locales::EN ),
 			// English (Australia)
-			array( 'en_AU', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN ),
+			array( 'en_AU', Locales::EN ),
 			// English (Canada)
-			array( 'en_CA', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN ),
+			array( 'en_CA', Locales::EN ),
 			// English (South Africa)
-			array( 'en_ZA', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN ),
+			array( 'en_ZA', Locales::EN ),
 			// English (UK)
-			array( 'en_GB', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::EN ),
+			array( 'en_GB', Locales::EN ),
 			// Spanish (Argentina)
-			array( 'es_AR', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_AR', Locales::ES ),
 			// Spanish (Chile)
-			array( 'es_CL', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_CL', Locales::ES ),
 			// Spanish (Colombia)
-			array( 'es_CO', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_CO', Locales::ES ),
 			// Spanish (Mexico)
-			array( 'es_MX', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_MX', Locales::ES ),
 			// Spanish (Peru)
-			array( 'es_PE', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_PE', Locales::ES ),
 			// Spanish (Puerto Rico)
-			array( 'es_PR', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_PR', Locales::ES ),
 			// Spanish (Spain)
-			array( 'es_ES', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_ES', Locales::ES ),
 			// Spanish (Venezuela)
-			array( 'es_VE', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::ES ),
+			array( 'es_VE', Locales::ES ),
 			// French (Belgium)
-			array( 'fr_BE', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::FR ),
+			array( 'fr_BE', Locales::FR ),
 			// French (Canada)
-			array( 'fr_CA', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::FR ),
+			array( 'fr_CA', Locales::FR ),
 			// French (France)
-			array( 'fr_FR', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::FR ),
+			array( 'fr_FR', Locales::FR ),
 			// Dutch
-			array( 'nl_NL', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::NL ),
+			array( 'nl_NL', Locales::NL ),
 			// Dutch (Belgium)
-			array( 'nl_BE', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::NL ),
+			array( 'nl_BE', Locales::NL ),
 			// Slovak
-			array( 'sk_SK', Pronamic_WP_Pay_Gateways_OmniKassa_Locales::SK ),
+			array( 'sk_SK', Locales::SK ),
 			// Not supported
 			array( 'not supported language code', null ),
 		);

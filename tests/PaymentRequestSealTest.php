@@ -1,8 +1,12 @@
 <?php
 
-class Pronamic_Pay_Gateways_OmniKassa_TestPaymentRequestSeal extends WP_UnitTestCase {
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use WP_UnitTestCase;
+
+class TestPaymentRequestSeal extends WP_UnitTestCase {
 	function test_seal() {
-		$omnikassa = new Pronamic_WP_Pay_Gateways_OmniKassa_Client();
+		$omnikassa = new Client();
 
 		$omnikassa->set_amount( 0.55 );
 		$omnikassa->set_currency_numeric_code( 978 );

@@ -1,15 +1,20 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use Pronamic\WordPress\Pay\Core\Statuses;
+
 /**
  * Title: OmniKassa response codes
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
+class ResponseCodes {
 	/**
 	 * Transaction successful.
 	 *
@@ -143,19 +148,20 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
 	 */
 	const PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE = '99';
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Transform an OmniKassa response code to an more global status
 	 *
 	 * @see page 30 http://pronamic.nl/wp-content/uploads/2013/10/integratiehandleiding_rabo_omnikassa_en_versie_5_0_juni_2013_10_29451215.pdf
 	 *
 	 * @param string $response_code
+	 *
+	 * @return string|null
 	 */
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
 			case self::TRANSACTION_SUCCES :
-				return Pronamic_WP_Pay_Statuses::SUCCESS;
+				return Statuses::SUCCESS;
+
 			case self::AUTHORIZATION_LIMIT :
 			case self::INVALID_MERCHANT_CONTRACT :
 			case self::AUTHORIZATION_REFUSED :
@@ -169,14 +175,18 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_ResponseCodes {
 			case self::NUMBER_ATTEMPT_EXCEEDED :
 			case self::ACQUIRER_SERVER_TEMPORARILY_UNAVAILABLE :
 			case self::DUPLICATE_TRANSACTION :
-				return Pronamic_WP_Pay_Statuses::FAILURE;
+				return Statuses::FAILURE;
+
 			case self::CANCELLATION_OF_PAYMENT :
-				return Pronamic_WP_Pay_Statuses::CANCELLED;
+				return Statuses::CANCELLED;
+
 			case self::PENDING_TRANSACTION :
 			case self::PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE :
-				return Pronamic_WP_Pay_Statuses::OPEN;
+				return Statuses::OPEN;
+
 			case self::REQUEST_TIMEOUT :
-				return Pronamic_WP_Pay_Statuses::EXPIRED;
+				return Statuses::EXPIRED;
+
 			default :
 				return null;
 		}

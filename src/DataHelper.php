@@ -1,15 +1,19 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use Pronamic\WordPress\Pay\Core\DataHelper as Core_DataHelper;
+
 /**
  * Title: OmniKassa data helper class
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
+class DataHelper {
 	/**
 	 * N - Indicates that a numerical value [0-9] is accepted
 	 *
@@ -31,17 +35,16 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
 	 */
 	private static $characters_an = array( 'A-Z', 'a-z', '0-9' );
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Filter N characters
 	 *
 	 * @param string $string
 	 * @param string $max
+	 *
 	 * @return string
 	 */
 	public static function filter_n( $string, $max = null ) {
-		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_n, $string, $max );
+		return Core_DataHelper::filter( self::$characters_n, $string, $max );
 	}
 
 	/**
@@ -49,10 +52,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
 	 *
 	 * @param string $string
 	 * @param string $max
+	 *
 	 * @return string
 	 */
 	public static function filter_a( $string, $max = null ) {
-		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_a, $string, $max );
+		return Core_DataHelper::filter( self::$characters_a, $string, $max );
 	}
 
 	/**
@@ -60,9 +64,10 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper {
 	 *
 	 * @param string $string
 	 * @param string $max
+	 *
 	 * @return string
 	 */
 	public static function filter_an( $string, $max = null ) {
-		return Pronamic_WP_Pay_DataHelper::filter( self::$characters_an, $string, $max );
+		return Core_DataHelper::filter( self::$characters_an, $string, $max );
 	}
 }

@@ -1,16 +1,21 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use Pronamic\WordPress\DateTime\DateTime;
+use Pronamic\WordPress\Pay\Core\Util as Core_Util;
+
 /**
  * Title: OmniKassa client
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.1.2
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
+class Client {
 	/**
 	 * Action URL to start a payment request in the test environment,
 	 * the POST data is sent to.
@@ -29,8 +34,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 */
 	const ACTION_URL_PRUDCTION = 'https://payment-webinit.omnikassa.rabobank.nl/paymentServlet';
 
-	//////////////////////////////////////////////////
-
 	const ISO_639_1_ENGLISH = 'en';
 
 	const ISO_639_1_FRENCH = 'fr';
@@ -42,8 +45,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	const ISO_639_1_SPANISH = 'es';
 
 	const ISO_639_1_DUTCH = 'nl';
-
-	//////////////////////////////////////////////////
 
 	public static function get_supported_language_codes() {
 		return array(
@@ -61,8 +62,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 		return in_array( $language, $languages, true );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Interface version HP 1.0
@@ -85,8 +84,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 */
 	const HASH_ALGORITHM_SHA256 = 'sha256';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * The action URL
 	 *
@@ -94,16 +91,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 */
 	private $action_url;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * The interface version
 	 *
 	 * @var string
 	 */
 	private $interface_version;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Currency code in ISO 4217-Numeric codification
@@ -150,8 +143,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 */
 	private $key_version;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Automatic response URL
 	 *
@@ -188,16 +179,12 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 */
 	private $expiration_date;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Secret key
 	 *
 	 * @var string
 	 */
 	private $secret_key;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Constructs and initalize an OmniKassa object
@@ -207,8 +194,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 		$this->set_interface_version( self::INTERFACE_VERSION_HP_1_0 );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get the action URL
@@ -228,8 +213,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		$this->action_url = $url;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get interface version
 	 *
@@ -248,8 +231,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		$this->interface_version = $interface_version;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get the currency numeric code
 	 *
@@ -262,13 +243,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
 	 * Set the currency code
 	 *
-	 * @param string $currencyCode
+	 * @param string $currency_numeric_code
 	 */
 	public function set_currency_numeric_code( $currency_numeric_code ) {
 		$this->currency_numeric_code = $currency_numeric_code;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get merchant ID
@@ -287,8 +266,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public function set_merchant_id( $merchant_id ) {
 		$this->merchant_id = $merchant_id;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get normal return URL
@@ -310,8 +287,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		$this->normal_return_url = $normal_return_url;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get amount
 	 *
@@ -327,7 +302,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * @return int
 	 */
 	public function get_formatted_amount() {
-		return Pronamic_WP_Pay_Util::amount_to_cents( $this->amount );
+		return Core_Util::amount_to_cents( $this->amount );
 	}
 
 	/**
@@ -338,8 +313,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public function set_amount( $amount ) {
 		$this->amount = $amount;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get transaction reference
@@ -354,13 +327,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * Set transaction reference
 	 * AN..max35 (AN = Alphanumeric, free text)
 	 *
-	 * @param string $transactionReference
+	 * @param string $transaction_reference
 	 */
 	public function set_transaction_reference( $transaction_reference ) {
-		$this->transaction_reference = Pronamic_WP_Pay_Gateways_OmniKassa_DataHelper::filter_an( $transaction_reference, 35 );
+		$this->transaction_reference = DataHelper::filter_an( $transaction_reference, 35 );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get key version
@@ -379,8 +350,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	public function set_key_version( $key_version ) {
 		$this->key_version = $key_version;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get automatic response URL
@@ -402,8 +371,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		$this->automatic_response_url = $automatic_response_url;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get customer language
 	 *
@@ -416,13 +383,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
 	 * Set customer language
 	 *
-	 * @param string $customerLanguage
+	 * @param string $customer_language
 	 */
 	public function set_customer_language( $customer_language ) {
 		$this->customer_language = $customer_language;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Add the specified payment mean brand to the payment mean brand list
@@ -442,8 +407,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		return apply_filters( 'pronamic_pay_omnikassa_payment_mean_brand_list', implode( ', ', $this->payment_mean_brand_list ) );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get order ID
 	 *
@@ -456,13 +419,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
 	 * Set order ID
 	 *
-	 * @param string $orderId
+	 * @param string $order_id
 	 */
 	public function set_order_id( $order_id ) {
 		$this->order_id = $order_id;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get expiration date
@@ -491,13 +452,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	/**
 	 * Set expiration date
 	 *
-	 * @param DateTime $expirationDate
+	 * @param DateTime $date
 	 */
 	public function set_expiration_date( DateTime $date = null ) {
 		$this->expiration_date = $date;
 	}
-
-	//////////////////////////////////////////////////
 
 	public function get_data_array() {
 		// Payment Request - required fields
@@ -528,8 +487,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		return $data;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get data
 	 *
@@ -540,8 +497,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 		return self::create_piped_string( $data );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get secret key
@@ -561,8 +516,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		$this->secret_key = $secret_key;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get seal
 	 *
@@ -579,7 +532,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * Compute seal
 	 *
 	 * @param string $data
-	 * @param string $secretKey
+	 * @param string $secret_key
+	 *
+	 * @return string seal
 	 */
 	public static function compute_seal( $data, $secret_key ) {
 		$value = $data . $secret_key;
@@ -587,8 +542,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 		return hash( self::HASH_ALGORITHM_SHA256, $value );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get fields
@@ -604,12 +557,11 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 		);
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Create an piped string for the specified data array
 	 *
 	 * @param array $data
+	 *
 	 * @return string
 	 */
 	public static function create_piped_string( array $data ) {
@@ -621,6 +573,7 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 	 * Parse piped string
 	 *
 	 * @param string $string
+	 *
 	 * @return array
 	 */
 	public static function parse_piped_string( $string ) {
@@ -635,8 +588,6 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_Client {
 
 		return $data;
 	}
-
-	//////////////////////////////////////////////////
 
 	public function get_response_code_description() {
 		return array(

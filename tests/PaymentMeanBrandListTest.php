@@ -1,23 +1,27 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
+
+use WP_UnitTestCase;
+
 /**
  * Title: OmniKassa payment mean brand list test
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.1.0
- * @since 1.1.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.1.0
  */
-class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandListTest extends WP_UnitTestCase {
+class PaymentMeanBrandListTest extends WP_UnitTestCase {
 	/**
 	 * Test constructor
 	 */
 	function test_constructor() {
-		$list = new Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList( array(
-			Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL,
-			Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO,
+		$list = new PaymentMeanBrandList( array(
+			Methods::IDEAL,
+			Methods::INCASSO,
 		) );
 
 		$string = (string) $list;
@@ -29,9 +33,9 @@ class Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandListTest extends WP_Uni
 	 * Test add payment method
 	 */
 	function test_add_payment_method() {
-		$list = new Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMeanBrandList();
-		$list->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::IDEAL );
-		$list->add_payment_mean_brand( Pronamic_WP_Pay_Gateways_OmniKassa_PaymentMethods::INCASSO );
+		$list = new PaymentMeanBrandList();
+		$list->add_payment_mean_brand( Methods::IDEAL );
+		$list->add_payment_mean_brand( Methods::INCASSO );
 
 		$string = (string) $list;
 
