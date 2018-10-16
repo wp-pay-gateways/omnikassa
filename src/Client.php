@@ -297,15 +297,6 @@ class Client {
 	}
 
 	/**
-	 * Get formmated amount
-	 *
-	 * @return int
-	 */
-	public function get_formatted_amount() {
-		return Core_Util::amount_to_cents( $this->amount );
-	}
-
-	/**
 	 * Set amount
 	 *
 	 * @param float $amount
@@ -461,7 +452,7 @@ class Client {
 	public function get_data_array() {
 		// Payment Request - required fields
 		$required_fields = array(
-			'amount'               => $this->get_formatted_amount(),
+			'amount'               => $this->get_amount(),
 			'currencyCode'         => $this->get_currency_numeric_code(),
 			'merchantId'           => $this->get_merchant_id(),
 			'normalReturnUrl'      => $this->get_normal_return_url(),
