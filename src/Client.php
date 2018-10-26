@@ -452,12 +452,12 @@ class Client {
 	public function get_data_array() {
 		// Payment Request - required fields
 		$required_fields = array(
-			'amount'               => $this->get_amount(),
-			'currencyCode'         => $this->get_currency_numeric_code(),
+			'amount'               => strval( $this->get_amount() ),
+			'currencyCode'         => strval( $this->get_currency_numeric_code() ),
 			'merchantId'           => $this->get_merchant_id(),
 			'normalReturnUrl'      => $this->get_normal_return_url(),
 			'transactionReference' => $this->get_transaction_reference(),
-			'keyVersion'           => $this->get_key_version(),
+			'keyVersion'           => strval($this->get_key_version() ),
 		);
 
 		// Payment request - optional fields
