@@ -457,7 +457,7 @@ class Client {
 			'merchantId'           => $this->get_merchant_id(),
 			'normalReturnUrl'      => $this->get_normal_return_url(),
 			'transactionReference' => $this->get_transaction_reference(),
-			'keyVersion'           => strval($this->get_key_version() ),
+			'keyVersion'           => strval( $this->get_key_version() ),
 		);
 
 		// Payment request - optional fields
