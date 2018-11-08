@@ -1,7 +1,7 @@
 {
 	"name": "wp-pay-gateways/omnikassa",
-	"description": "OmniKassa driver for the WordPress payment processing library.",
-	"keywords": ["wordpress", "wp", "pay", "omnikassa", "gateway", "pronamic"],
+	"description": "✗ [DEPRECATED] OmniKassa driver for the WordPress payment processing library.",
+	"keywords": ["wordpress", "wp", "pay", "omnikassa", "gateway", "pronamic", "deprecated"],
 	"homepage": "http://www.wp-pay.org/gateways/omnikassa/",
 	"license": "GPL-3.0-or-later",
 	"authors": [
