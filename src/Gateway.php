@@ -18,23 +18,28 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  */
 class Gateway extends Core_Gateway {
 	/**
+	 * Client.
+	 *
+	 * @var Client
+	 */
+	protected $client;
+
+	/**
 	 * Constructs and initializes an OmniKassa gateway
 	 *
-	 * @param Config $config
+	 * @param Config $config Config.
 	 */
 	public function __construct( Config $config ) {
 		parent::__construct( $config );
 
-		$this->set_method( Gateway::METHOD_HTML_FORM );
-		$this->set_has_feedback( true );
-		$this->set_amount_minimum( 0.01 );
+		$this->set_method( self::METHOD_HTML_FORM );
 
-		// Client
+		// Client.
 		$this->client = new Client();
 
 		$action_url = Client::ACTION_URL_PRUDCTION;
 
-		if ( Gateway::MODE_TEST === $config->mode ) {
+		if ( self::MODE_TEST === $config->mode ) {
 			$action_url = Client::ACTION_URL_TEST;
 		}
 
@@ -63,7 +68,7 @@ class Gateway extends Core_Gateway {
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function start( Payment $payment ) {
 		$transaction_reference = $payment->get_meta( 'omnikassa_transaction_reference' );
@@ -77,12 +82,18 @@ class Gateway extends Core_Gateway {
 		$payment->set_transaction_id( $transaction_reference );
 		$payment->set_action_url( $this->client->get_action_url() );
 
-		$this->client->set_customer_language( LocaleHelper::transform( $payment->get_language() ) );
-		$this->client->set_currency_numeric_code( $payment->get_currency_numeric_code() );
+		$language = null;
+
+		if ( null !== $payment->get_customer() ) {
+			$language = $payment->get_customer()->get_language();
+		}
+
+		$this->client->set_customer_language( LocaleHelper::transform( $language ) );
+		$this->client->set_currency_numeric_code( $payment->get_total_amount()->get_currency()->get_numeric_code() );
 		$this->client->set_order_id( $payment->format_string( $this->config->order_id ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
-		$this->client->set_amount( $payment->get_amount()->get_amount() );
+		$this->client->set_amount( $payment->get_total_amount()->get_cents() );
 		$this->client->set_transaction_reference( $transaction_reference );
 
 		switch ( $payment->get_method() ) {
@@ -115,31 +126,31 @@ class Gateway extends Core_Gateway {
 			 * redirect the customer directly to the payment page for
 			 * this payment method.
 			 */
-			case PaymentMethods::BANCONTACT :
-			case PaymentMethods::MISTER_CASH :
+			case PaymentMethods::BANCONTACT:
+			case PaymentMethods::MISTER_CASH:
 				$this->client->add_payment_mean_brand( Methods::BCMC );
 
 				break;
-			case PaymentMethods::CREDIT_CARD :
+			case PaymentMethods::CREDIT_CARD:
 				$this->client->add_payment_mean_brand( Methods::MAESTRO );
 				$this->client->add_payment_mean_brand( Methods::MASTERCARD );
 				$this->client->add_payment_mean_brand( Methods::VISA );
 				$this->client->add_payment_mean_brand( Methods::VPAY );
 
 				break;
-			case PaymentMethods::DIRECT_DEBIT :
+			case PaymentMethods::DIRECT_DEBIT:
 				$this->client->add_payment_mean_brand( Methods::INCASSO );
 
 				break;
-			case PaymentMethods::MAESTRO :
+			case PaymentMethods::MAESTRO:
 				$this->client->add_payment_mean_brand( Methods::MAESTRO );
 
 				break;
-			case PaymentMethods::IDEAL :
+			case PaymentMethods::IDEAL:
 				$this->client->add_payment_mean_brand( Methods::IDEAL );
 
 				break;
-			default :
+			default:
 				$this->client->add_payment_mean_brand( Methods::IDEAL );
 				$this->client->add_payment_mean_brand( Methods::VISA );
 				$this->client->add_payment_mean_brand( Methods::MASTERCARD );
@@ -167,7 +178,7 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Update status of the specified payment
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function update_status( Payment $payment ) {
 		$input_data = filter_input( INPUT_POST, 'Data' );
@@ -177,13 +188,13 @@ class Gateway extends Core_Gateway {
 
 		$seal = Client::compute_seal( $input_data, $this->config->secret_key );
 
-		// Check if the posted seal is equal to our seal
+		// Check if the posted seal is equal to our seal.
 		if ( 0 === strcasecmp( $input_seal, $seal ) ) {
 			$response_code = $data['responseCode'];
 
 			$status = ResponseCodes::transform( $response_code );
 
-			// Set the status of the payment
+			// Set the status of the payment.
 			$payment->set_status( $status );
 
 			$labels = array(

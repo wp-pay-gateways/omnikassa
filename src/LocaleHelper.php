@@ -14,12 +14,18 @@ namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
  */
 class LocaleHelper {
 	/**
-	 * Get OmniKassa locale by the specified WordPress locale
+	 * Get OmniKassa locale for the specified language.
+	 *
+	 * @param string $language Language to transform to OmniKassa locale.
 	 *
 	 * @return string|null
 	 */
-	public static function transform( $locale ) {
-		// Supported locales
+	public static function transform( $language ) {
+		if ( ! is_string( $language ) ) {
+			return null;
+		}
+
+		// Supported locales.
 		$supported = array(
 			Locales::CS,
 			Locales::CY,
@@ -31,10 +37,10 @@ class LocaleHelper {
 			Locales::SK,
 		);
 
-		// Sub string
-		$locale = substr( $locale, 0, 2 );
+		// Sub string.
+		$locale = substr( $language, 0, 2 );
 
-		// Lower case
+		// Upper case.
 		$locale = strtoupper( $locale );
 
 		// Is supported?

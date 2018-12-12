@@ -24,6 +24,7 @@ class Integration extends AbstractIntegration {
 			__( 'download', 'pronamic_ideal' ) => 'https://download.omnikassa.rabobank.nl/',
 		);
 		$this->provider      = 'rabobank';
+		$this->deprecated    = true;
 
 		// Actions
 		$function = array( __NAMESPACE__ . '\Listener', 'listen' );

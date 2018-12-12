@@ -101,8 +101,8 @@ class Client {
 	/**
 	 * Currency code in ISO 4217-Numeric codification
 	 *
-	 * @doc http://en.wikipedia.org/wiki/ISO_4217
-	 * @doc http://www.iso.org/iso/support/faqs/faqs_widely_used_standards/widely_used_standards_other/currency_codes/currency_codes_list-1.htm
+	 * @link https://en.wikipedia.org/wiki/ISO_4217
+	 * @link http://www.iso.org/iso/support/faqs/faqs_widely_used_standards/widely_used_standards_other/currency_codes/currency_codes_list-1.htm
 	 *
 	 * @var string N3
 	 */
@@ -153,7 +153,7 @@ class Client {
 	/**
 	 * Customer language in ISO 639‐1 Alpha2
 	 *
-	 * @doc http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 * @var string A2
 	 */
 	private $customer_language;
@@ -294,15 +294,6 @@ class Client {
 	 */
 	public function get_amount() {
 		return $this->amount;
-	}
-
-	/**
-	 * Get formmated amount
-	 *
-	 * @return int
-	 */
-	public function get_formatted_amount() {
-		return Core_Util::amount_to_cents( $this->amount );
 	}
 
 	/**
@@ -461,12 +452,12 @@ class Client {
 	public function get_data_array() {
 		// Payment Request - required fields
 		$required_fields = array(
-			'amount'               => $this->get_formatted_amount(),
-			'currencyCode'         => $this->get_currency_numeric_code(),
+			'amount'               => strval( $this->get_amount() ),
+			'currencyCode'         => strval( $this->get_currency_numeric_code() ),
 			'merchantId'           => $this->get_merchant_id(),
 			'normalReturnUrl'      => $this->get_normal_return_url(),
 			'transactionReference' => $this->get_transaction_reference(),
-			'keyVersion'           => $this->get_key_version(),
+			'keyVersion'           => strval( $this->get_key_version() ),
 		);
 
 		// Payment request - optional fields
@@ -478,7 +469,7 @@ class Client {
 			'expirationDate'       => $this->get_formatted_expiration_date(),
 		);
 
-		// @see http://briancray.com/2009/04/25/remove-null-values-php-arrays/
+		// @link http://briancray.com/2009/04/25/remove-null-values-php-arrays/
 		$optional_fields = array_filter( $optional_fields );
 
 		// Data
@@ -565,7 +556,7 @@ class Client {
 	 * @return string
 	 */
 	public static function create_piped_string( array $data ) {
-		// @see http://core.trac.wordpress.org/browser/tags/3.3.1/wp-includes/functions.php#L1385
+		// @link http://core.trac.wordpress.org/browser/tags/3.3.1/wp-includes/functions.php#L1385
 		return _http_build_query( $data, null, '|', '', false );
 	}
 

@@ -17,8 +17,8 @@ class Locales {
 	 * Czech (Čeština)
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const CS = 'CS';
 
@@ -26,8 +26,8 @@ class Locales {
 	 * Welsh (Cymraeg)
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const CY = 'CY';
 
@@ -35,8 +35,8 @@ class Locales {
 	 * German (Deutsch)
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const DE = 'DE';
 
@@ -44,8 +44,8 @@ class Locales {
 	 * English
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const EN = 'EN';
 
@@ -53,8 +53,8 @@ class Locales {
 	 * Spanish (Español)
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const ES = 'ES';
 
@@ -62,8 +62,8 @@ class Locales {
 	 * French
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const FR = 'FR';
 
@@ -71,8 +71,8 @@ class Locales {
 	 * Dutch (Nederlands)
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const NL = 'NL';
 
@@ -80,8 +80,8 @@ class Locales {
 	 * Slovak
 	 *
 	 * @var string
-	 * @see https://www.rabobank.nl/images/integrationguide_29717880.pdf
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 * @link https://www.rabobank.nl/images/integrationguide_29717880.pdf
+	 * @link https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	 */
 	const SK = 'SK';
 }
