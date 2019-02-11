@@ -5,7 +5,10 @@ namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 use WP_UnitTestCase;
 
 class TestPaymentRequestData extends WP_UnitTestCase {
-	function test_data() {
+	/**
+	 * Test payment request data.
+	 */
+	public function test_data() {
 		$omnikassa = new Client();
 
 		$omnikassa->set_amount( 55 );

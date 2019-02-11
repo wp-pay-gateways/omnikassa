@@ -5,7 +5,10 @@ namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 use WP_UnitTestCase;
 
 class TestPaymentRequestSeal extends WP_UnitTestCase {
-	function test_seal() {
+	/**
+	 * Test payment request seal.
+	 */
+	public function test_seal() {
 		$omnikassa = new Client();
 
 		$omnikassa->set_amount( 55 );
