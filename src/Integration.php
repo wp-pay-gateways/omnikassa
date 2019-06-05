@@ -34,26 +34,85 @@ class Integration extends AbstractIntegration {
 		}
 	}
 
-	public function get_config_factory_class() {
-		return __NAMESPACE__ . '\ConfigFactory';
-	}
-
-	public function get_settings_class() {
-		return __NAMESPACE__ . '\Settings';
-	}
-
 	/**
-	 * Get required settings for this integration.
+	 * Get settings fields.
 	 *
-	 * @see   https://github.com/wp-premium/gravityforms/blob/1.9.16/includes/fields/class-gf-field-multiselect.php#L21-L42
-	 * @since 1.1.6
 	 * @return array
 	 */
-	public function get_settings() {
-		$settings = parent::get_settings();
+	public function get_settings_fields() {
+		$fields = array();
 
-		$settings[] = 'omnikassa';
+		// Merchant ID
+		$fields[] = array(
+			'section'  => 'general',
+			'filter'   => FILTER_SANITIZE_STRING,
+			'meta_key' => '_pronamic_gateway_omnikassa_merchant_id',
+			'title'    => __( 'Merchant ID', 'pronamic_ideal' ),
+			'type'     => 'text',
+			'classes'  => array( 'code' ),
+		);
 
-		return $settings;
+		// Secret Key
+		$fields[] = array(
+			'section'  => 'general',
+			'filter'   => FILTER_SANITIZE_STRING,
+			'meta_key' => '_pronamic_gateway_omnikassa_secret_key',
+			'title'    => __( 'Secret Key', 'pronamic_ideal' ),
+			'type'     => 'text',
+			'classes'  => array( 'large-text', 'code' ),
+		);
+
+		// Key Version
+		$fields[] = array(
+			'section'  => 'general',
+			'filter'      => FILTER_SANITIZE_STRING,
+			'meta_key'    => '_pronamic_gateway_omnikassa_key_version',
+			'title'       => __( 'Key Version', 'pronamic_ideal' ),
+			'type'        => 'text',
+			'classes'     => array( 'code' ),
+			'size'        => 5,
+			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
+		);
+
+		// Purchase ID
+		$fields[] = array(
+			'section'     => 'advanced',
+			'filter'      => FILTER_SANITIZE_STRING,
+			'meta_key'    => '_pronamic_gateway_omnikassa_order_id',
+			'title'       => __( 'Order ID', 'pronamic_ideal' ),
+			'type'        => 'text',
+			'classes'     => array( 'regular-text', 'code' ),
+			'tooltip'     => sprintf(
+				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
+				sprintf( '<code>%s</code>', 'orderId' )
+			),
+			'description' => sprintf(
+				'%s %s<br />%s',
+				__( 'Available tags:', 'pronamic_ideal' ),
+				sprintf(
+					'<code>%s</code> <code>%s</code>',
+					'{order_id}',
+					'{payment_id}'
+				),
+				sprintf(
+					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
+					'{payment_id}'
+				)
+			),
+		);
+
+		return $fields;
+	}
+
+	public function get_config( $post_id ) {
+		$config = new Config();
+
+		$config->merchant_id = get_post_meta( $post_id, '_pronamic_gateway_omnikassa_merchant_id', true );
+		$config->secret_key  = get_post_meta( $post_id, '_pronamic_gateway_omnikassa_secret_key', true );
+		$config->key_version = get_post_meta( $post_id, '_pronamic_gateway_omnikassa_key_version', true );
+		$config->order_id    = get_post_meta( $post_id, '_pronamic_gateway_omnikassa_order_id', true );
+		$config->mode        = get_post_meta( $post_id, '_pronamic_gateway_mode', true );
+
+		return $config;
 	}
 }
