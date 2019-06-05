@@ -7,7 +7,7 @@ use Pronamic\WordPress\Pay\Core\GatewaySettings;
 /**
  * Title: iDEAL gateway settings
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -15,19 +15,29 @@ use Pronamic\WordPress\Pay\Core\GatewaySettings;
  * @since   1.0.0
  */
 class Settings extends GatewaySettings {
+	/**
+	 * Settings constructor.
+	 */
 	public function __construct() {
 		add_filter( 'pronamic_pay_gateway_sections', array( $this, 'sections' ) );
 		add_filter( 'pronamic_pay_gateway_fields', array( $this, 'fields' ) );
 	}
 
+	/**
+	 * Sections.
+	 *
+	 * @param array $sections Settings sections.
+	 *
+	 * @return array
+	 */
 	public function sections( array $sections ) {
-		// iDEAL
+		// OmniKassa.
 		$sections['omnikassa'] = array(
 			'title'   => __( 'OmniKassa', 'pronamic_ideal' ),
 			'methods' => array( 'omnikassa' ),
 		);
 
-		// Advanced
+		// Advanced.
 		$sections['omnikassa_advanced'] = array(
 			'title'   => __( 'Advanced', 'pronamic_ideal' ),
 			'methods' => array( 'omnikassa' ),
@@ -36,8 +46,15 @@ class Settings extends GatewaySettings {
 		return $sections;
 	}
 
+	/**
+	 * Fields.
+	 *
+	 * @param array $fields Settings fields.
+	 *
+	 * @return array
+	 */
 	public function fields( array $fields ) {
-		// Merchant ID
+		// Merchant ID.
 		$fields[] = array(
 			'filter'   => FILTER_SANITIZE_STRING,
 			'section'  => 'omnikassa',
@@ -47,7 +64,7 @@ class Settings extends GatewaySettings {
 			'classes'  => array( 'code' ),
 		);
 
-		// Secret Key
+		// Secret Key..
 		$fields[] = array(
 			'filter'   => FILTER_SANITIZE_STRING,
 			'section'  => 'omnikassa',
@@ -57,7 +74,7 @@ class Settings extends GatewaySettings {
 			'classes'  => array( 'large-text', 'code' ),
 		);
 
-		// Key Version
+		// Key Version.
 		$fields[] = array(
 			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'omnikassa',
@@ -66,10 +83,17 @@ class Settings extends GatewaySettings {
 			'type'        => 'text',
 			'classes'     => array( 'code' ),
 			'size'        => 5,
-			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
+			'description' => sprintf(
+				/* translators: %s: dashboard URL */
+				__(
+					'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.',
+					'pronamic_ideal'
+				),
+				'https://download.omnikassa.rabobank.nl/'
+			),
 		);
 
-		// Transaction feedback
+		// Transaction feedback.
 		$fields[] = array(
 			'section' => 'omnikassa',
 			'title'   => __( 'Transaction feedback', 'pronamic_ideal' ),
@@ -80,7 +104,7 @@ class Settings extends GatewaySettings {
 			),
 		);
 
-		// Purchase ID
+		// Purchase ID.
 		$fields[] = array(
 			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'omnikassa_advanced',
@@ -89,6 +113,7 @@ class Settings extends GatewaySettings {
 			'type'        => 'text',
 			'classes'     => array( 'regular-text', 'code' ),
 			'tooltip'     => sprintf(
+				/* translators: %s: <code>orderId</code> */
 				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
 				sprintf( '<code>%s</code>', 'orderId' )
 			),
@@ -101,6 +126,7 @@ class Settings extends GatewaySettings {
 					'{payment_id}'
 				),
 				sprintf(
+					/* translators: %s: {payment_id} */
 					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
 					'{payment_id}'
 				)

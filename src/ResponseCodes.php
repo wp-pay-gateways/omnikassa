@@ -7,7 +7,7 @@ use Pronamic\WordPress\Pay\Core\Statuses;
 /**
  * Title: OmniKassa response codes
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -153,41 +153,41 @@ class ResponseCodes {
 	 *
 	 * @see page 30 http://pronamic.nl/wp-content/uploads/2013/10/integratiehandleiding_rabo_omnikassa_en_versie_5_0_juni_2013_10_29451215.pdf
 	 *
-	 * @param string $response_code
+	 * @param string $response_code Response code.
 	 *
 	 * @return string|null
 	 */
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
-			case self::TRANSACTION_SUCCES :
+			case self::TRANSACTION_SUCCES:
 				return Statuses::SUCCESS;
 
-			case self::AUTHORIZATION_LIMIT :
-			case self::INVALID_MERCHANT_CONTRACT :
-			case self::AUTHORIZATION_REFUSED :
-			case self::INVALID_TRANSACTION :
-			case self::INVALID_STATUS :
-			case self::TRANSACTION_NOT_FOUND_IN_DATABASE :
-			case self::INVALID_FORMAT :
-			case self::FRAUD_SUSPICION :
-			case self::OPERATION_NOT_ALLOWED :
-			case self::SECURITY_BREACH_DETECTED :
-			case self::NUMBER_ATTEMPT_EXCEEDED :
-			case self::ACQUIRER_SERVER_TEMPORARILY_UNAVAILABLE :
-			case self::DUPLICATE_TRANSACTION :
+			case self::AUTHORIZATION_LIMIT:
+			case self::INVALID_MERCHANT_CONTRACT:
+			case self::AUTHORIZATION_REFUSED:
+			case self::INVALID_TRANSACTION:
+			case self::INVALID_STATUS:
+			case self::TRANSACTION_NOT_FOUND_IN_DATABASE:
+			case self::INVALID_FORMAT:
+			case self::FRAUD_SUSPICION:
+			case self::OPERATION_NOT_ALLOWED:
+			case self::SECURITY_BREACH_DETECTED:
+			case self::NUMBER_ATTEMPT_EXCEEDED:
+			case self::ACQUIRER_SERVER_TEMPORARILY_UNAVAILABLE:
+			case self::DUPLICATE_TRANSACTION:
 				return Statuses::FAILURE;
 
-			case self::CANCELLATION_OF_PAYMENT :
+			case self::CANCELLATION_OF_PAYMENT:
 				return Statuses::CANCELLED;
 
-			case self::PENDING_TRANSACTION :
-			case self::PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE :
+			case self::PENDING_TRANSACTION:
+			case self::PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE:
 				return Statuses::OPEN;
 
-			case self::REQUEST_TIMEOUT :
+			case self::REQUEST_TIMEOUT:
 				return Statuses::EXPIRED;
 
-			default :
+			default:
 				return null;
 		}
 	}

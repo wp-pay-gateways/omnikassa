@@ -7,7 +7,7 @@ use WP_UnitTestCase;
 /**
  * Title: OmniKassa payment mean brand list test
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -18,11 +18,13 @@ class PaymentMeanBrandListTest extends WP_UnitTestCase {
 	/**
 	 * Test constructor
 	 */
-	function test_constructor() {
-		$list = new PaymentMeanBrandList( array(
-			Methods::IDEAL,
-			Methods::INCASSO,
-		) );
+	public function test_constructor() {
+		$list = new PaymentMeanBrandList(
+			array(
+				Methods::IDEAL,
+				Methods::INCASSO,
+			)
+		);
 
 		$string = (string) $list;
 
@@ -32,7 +34,7 @@ class PaymentMeanBrandListTest extends WP_UnitTestCase {
 	/**
 	 * Test add payment method
 	 */
-	function test_add_payment_method() {
+	public function test_add_payment_method() {
 		$list = new PaymentMeanBrandList();
 		$list->add_payment_mean_brand( Methods::IDEAL );
 		$list->add_payment_mean_brand( Methods::INCASSO );
