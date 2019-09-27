@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 
-use Pronamic\WordPress\Pay\Core\Statuses;
+use Pronamic\WordPress\Pay\Payments\PaymentStatus;
 
 /**
  * Title: OmniKassa response codes
@@ -160,7 +160,7 @@ class ResponseCodes {
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
 			case self::TRANSACTION_SUCCES:
-				return Statuses::SUCCESS;
+				return PaymentStatus::SUCCESS;
 
 			case self::AUTHORIZATION_LIMIT:
 			case self::INVALID_MERCHANT_CONTRACT:
@@ -175,17 +175,17 @@ class ResponseCodes {
 			case self::NUMBER_ATTEMPT_EXCEEDED:
 			case self::ACQUIRER_SERVER_TEMPORARILY_UNAVAILABLE:
 			case self::DUPLICATE_TRANSACTION:
-				return Statuses::FAILURE;
+				return PaymentStatus::FAILURE;
 
 			case self::CANCELLATION_OF_PAYMENT:
-				return Statuses::CANCELLED;
+				return PaymentStatus::CANCELLED;
 
 			case self::PENDING_TRANSACTION:
 			case self::PAYMENT_PAGE_TEMPORARILY_UNAVAILABLE:
-				return Statuses::OPEN;
+				return PaymentStatus::OPEN;
 
 			case self::REQUEST_TIMEOUT:
-				return Statuses::EXPIRED;
+				return PaymentStatus::EXPIRED;
 
 			default:
 				return null;
