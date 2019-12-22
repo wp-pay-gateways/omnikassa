@@ -11,7 +11,7 @@ use Pronamic\WordPress\Pay\Core\DataHelper as Core_DataHelper;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 1.0.0
+ * @version 2.0.3
  */
 class DataHelper {
 	/**

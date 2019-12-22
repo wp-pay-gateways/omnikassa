@@ -13,7 +13,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.3
  * @since   1.0.0
  */
 class Gateway extends Core_Gateway {
@@ -81,7 +81,19 @@ class Gateway extends Core_Gateway {
 
 		$payment->set_transaction_id( $transaction_reference );
 		$payment->set_action_url( $this->client->get_action_url() );
+	}
 
+	/**
+	 * Get the output HTML
+	 *
+	 * @param Payment $payment Payment.
+	 *
+	 * @return array
+	 * @see      Core_Gateway::get_output_html()
+	 * @since    1.1.2
+	 * @version  2.0.3
+	 */
+	public function get_output_fields( Payment $payment ) {
 		$language = null;
 
 		if ( null !== $payment->get_customer() ) {
@@ -93,8 +105,8 @@ class Gateway extends Core_Gateway {
 		$this->client->set_order_id( $payment->format_string( $this->config->order_id ) );
 		$this->client->set_normal_return_url( home_url( '/' ) );
 		$this->client->set_automatic_response_url( home_url( '/' ) );
-		$this->client->set_amount( $payment->get_total_amount()->get_cents() );
-		$this->client->set_transaction_reference( $transaction_reference );
+		$this->client->set_amount( $payment->get_total_amount()->get_minor_units() );
+		$this->client->set_transaction_reference( $payment->get_transaction_id() );
 
 		switch ( $payment->get_method() ) {
 			/*
@@ -163,15 +175,7 @@ class Gateway extends Core_Gateway {
 
 				break;
 		}
-	}
 
-	/**
-	 * Get the output HTML
-	 *
-	 * @since 1.1.2
-	 * @see   Pronamic_WP_Pay_Gateway::get_output_html()
-	 */
-	public function get_output_fields() {
 		return $this->client->get_fields();
 	}
 
