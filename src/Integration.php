@@ -35,14 +35,14 @@ class Integration extends AbstractIntegration {
 	}
 
 	/**
-	 * Fields.
+	 * Get settings fields.
 	 *
 	 * @return array
 	 */
 	public function get_settings_fields() {
 		$fields = array();
 
-		// Merchant ID.
+		// Merchant ID
 		$fields[] = array(
 			'section'  => 'general',
 			'filter'   => FILTER_SANITIZE_STRING,
@@ -52,7 +52,7 @@ class Integration extends AbstractIntegration {
 			'classes'  => array( 'code' ),
 		);
 
-		// Secret Key..
+		// Secret Key
 		$fields[] = array(
 			'section'  => 'general',
 			'filter'   => FILTER_SANITIZE_STRING,
@@ -62,26 +62,19 @@ class Integration extends AbstractIntegration {
 			'classes'  => array( 'large-text', 'code' ),
 		);
 
-		// Key Version.
+		// Key Version
 		$fields[] = array(
-			'section'     => 'general',
+			'section'  => 'general',
 			'filter'      => FILTER_SANITIZE_STRING,
 			'meta_key'    => '_pronamic_gateway_omnikassa_key_version',
 			'title'       => __( 'Key Version', 'pronamic_ideal' ),
 			'type'        => 'text',
 			'classes'     => array( 'code' ),
 			'size'        => 5,
-			'description' => sprintf(
-				/* translators: %s: dashboard URL */
-				__(
-					'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.',
-					'pronamic_ideal'
-				),
-				'https://download.omnikassa.rabobank.nl/'
-			),
+			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
 		);
 
-		// Purchase ID.
+		// Purchase ID
 		$fields[] = array(
 			'section'     => 'advanced',
 			'filter'      => FILTER_SANITIZE_STRING,
@@ -90,7 +83,6 @@ class Integration extends AbstractIntegration {
 			'type'        => 'text',
 			'classes'     => array( 'regular-text', 'code' ),
 			'tooltip'     => sprintf(
-				/* translators: %s: <code>orderId</code> */
 				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
 				sprintf( '<code>%s</code>', 'orderId' )
 			),
@@ -103,7 +95,6 @@ class Integration extends AbstractIntegration {
 					'{payment_id}'
 				),
 				sprintf(
-					/* translators: %s: {payment_id} */
 					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
 					'{payment_id}'
 				)
