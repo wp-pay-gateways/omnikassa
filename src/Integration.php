@@ -16,6 +16,8 @@ use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
  */
 class Integration extends AbstractIntegration {
 	public function __construct() {
+		parent::__construct();
+
 		$this->id            = 'rabobank-omnikassa';
 		$this->name          = 'Rabobank - OmniKassa';
 		$this->product_url   = 'https://www.rabobank.nl/bedrijven/betalen/geld-ontvangen/rabo-omnikassa/';
