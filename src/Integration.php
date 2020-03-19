@@ -2,29 +2,41 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\OmniKassa;
 
-use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
+use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
 
 /**
  * Title: OmniKassa integration
  * Description:
- * Copyright: 2005-2019 Pronamic
+ * Copyright: 2005-2020 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
  * @version 2.0.3
  * @since   1.0.0
  */
-class Integration extends AbstractIntegration {
-	public function __construct() {
-		$this->id            = 'rabobank-omnikassa';
-		$this->name          = 'Rabobank - OmniKassa';
-		$this->product_url   = 'https://www.rabobank.nl/bedrijven/betalen/geld-ontvangen/rabo-omnikassa/';
-		$this->dashboard_url = array(
-			__( 'admin', 'pronamic_ideal' )    => 'https://dashboard.omnikassa.rabobank.nl/',
-			__( 'download', 'pronamic_ideal' ) => 'https://download.omnikassa.rabobank.nl/',
+class Integration extends AbstractGatewayIntegration {
+	/**
+	 * Construct OmniKassa integration.
+	 *
+	 * @param array $args Arguments.
+	 */
+	public function __construct( $args = array() ) {
+		$args = wp_parse_args(
+			$args,
+			array(
+				'id'            => 'rabobank-omnikassa',
+				'name'          => 'Rabobank - OmniKassa',
+				'product_url'   => 'https://www.rabobank.nl/bedrijven/betalen/geld-ontvangen/rabo-omnikassa/',
+				'dashboard_url' => array(
+					\__( 'admin', 'pronamic_ideal' )    => 'https://dashboard.omnikassa.rabobank.nl/',
+					\__( 'download', 'pronamic_ideal' ) => 'https://download.omnikassa.rabobank.nl/',
+				),
+				'provider'      => 'rabobank',
+				'deprecated'    => true,
+			)
 		);
-		$this->provider      = 'rabobank';
-		$this->deprecated    = true;
+
+		parent::__construct( $args );
 
 		// Actions
 		$function = array( __NAMESPACE__ . '\Listener', 'listen' );
