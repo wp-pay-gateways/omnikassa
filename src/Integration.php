@@ -83,7 +83,11 @@ class Integration extends AbstractGatewayIntegration {
 			'type'        => 'text',
 			'classes'     => array( 'code' ),
 			'size'        => 5,
-			'description' => sprintf( __( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ), 'https://download.omnikassa.rabobank.nl/' ),
+			'description' => sprintf(
+				/* translators: %s: OmniKassa download dashboard URL */
+				__( 'You can find the key version in the <a href="%s" target="_blank">OmniKassa Download Dashboard</a>.', 'pronamic_ideal' ),
+				'https://download.omnikassa.rabobank.nl/'
+			),
 		);
 
 		// Purchase ID
@@ -95,6 +99,7 @@ class Integration extends AbstractGatewayIntegration {
 			'type'        => 'text',
 			'classes'     => array( 'regular-text', 'code' ),
 			'tooltip'     => sprintf(
+				/* translators: %s: <code>parameterName</code> */
 				__( 'The OmniKassa %s parameter.', 'pronamic_ideal' ),
 				sprintf( '<code>%s</code>', 'orderId' )
 			),
@@ -107,6 +112,7 @@ class Integration extends AbstractGatewayIntegration {
 					'{payment_id}'
 				),
 				sprintf(
+					/* translators: %s: default code */
 					__( 'Default: <code>%s</code>', 'pronamic_ideal' ),
 					'{payment_id}'
 				)
